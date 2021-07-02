@@ -8,7 +8,7 @@
 
 # Special signals
 ## Sign function    
-```pyton
+```python
 import numpy as np
 def sign(x):
     return np.sign(x)
