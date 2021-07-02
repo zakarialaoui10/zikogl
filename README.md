@@ -13,3 +13,9 @@ import numpy as np
 def sign(x):
     return np.sign(x)
 ```
+## Step function
+```python
+import numpy as np
+def step(t,t0=0):
+    return np.where(t>=t0,1,0)
+```
