@@ -5,7 +5,7 @@
 #### 1- Finite energy signals :
 #### 2- Signals at finite average power :
 ## 3- Morphological classification :
-# Special signals
+# Special signals :
 ## Sign function    
 ```python
 import numpy as np
