@@ -18,4 +18,4 @@ import numpy as np
 def step(t,t0=0):
     return np.where(t>=t0,1,0)
 ```
-## Rect function 
+## Rect function :
