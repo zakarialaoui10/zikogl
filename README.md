@@ -4,7 +4,7 @@
 ## 2- Energy classification :
 #### 1- Finite energy signals :
 #### 2- Signals at finite average power :
-## 3- Morphological classification
+## 3- Morphological classification :
 # Special signals
 ## Sign function    
 ```python
