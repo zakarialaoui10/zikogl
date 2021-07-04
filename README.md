@@ -12,7 +12,7 @@ import numpy as np
 def sign(x):
     return np.sign(x)
 ```
-## Step function
+## Step function :
 ```python
 import numpy as np
 def step(t,t0=0):
