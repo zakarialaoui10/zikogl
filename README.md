@@ -19,3 +19,7 @@ def step(t,t0=0):
     return np.where(t>=t0,1,0)
 ```
 ## Rect function :
+```python
+def p(t):
+    return 1 * (abs(t) < 0.5)
+  ``` 
