@@ -7,7 +7,7 @@
 #### 2- Signals at finite average power :
 ## 3- Morphological classification :
 # Special signals :
-## Sign function :    
+## Sign function :     
 ```python
 import numpy as np
 def sign(x):
