@@ -24,7 +24,7 @@ def step(t,t0=0):
 def p(t):
     return 1 * (abs(t) < 0.5)
   ``` 
- 
+  
   
   
  
