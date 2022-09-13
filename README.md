@@ -25,7 +25,7 @@ def p(t):
     return 1 * (abs(t) < 0.5)
   ``` 
  
- 
+  
  
  
 
