@@ -9,7 +9,7 @@
 # Special signals :
 ## Sign function :     
 ```python
-import numpy as np
+import numpy as np 
 def sign(x):
     return np.sign(x)
 ```
