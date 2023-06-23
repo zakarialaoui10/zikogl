@@ -8,7 +8,7 @@
 ## 3- Morphological classification :
 # Special signals :
 ## Sign function :     
-```python 
+```python  
 import numpy as np 
 def sign(x):
     return np.sign(x)
