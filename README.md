@@ -10,7 +10,7 @@
 ## Sign function :      
 ```python  
 import numpy as np 
-def sign(x):
+def sign(x): 
     return np.sign(x)
 ```
 ## Step function :
