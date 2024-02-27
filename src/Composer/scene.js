@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import { waitElm } from "../Utils";
 import { image2texture } from "../Loaders/image";
-import { ZikoUIImage } from "ziko";
+import { ZikoUIImage } from "ziko.js";
 import { 
     ZikoOrbitControls, 
     ZikoTransformControls 

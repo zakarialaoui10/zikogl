@@ -5,6 +5,11 @@
   "main": "src/index.js",
   "type": "module",
   "source": "src/index.js",
+  "files": [
+    "src",
+    "dist",
+    "LICENCE"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -13,16 +18,16 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c rollup.config.js",
-    "build2": "rollup -c _rollup.config.js"
+    "build": "rollup -c rollup.config.js"
   },
   "author": "zakaria elalaoui",
   "license": "MIT",
   "dependencies": {
     "three": "^0.158.0",
-    "ziko": "^0.1.2"
+    "ziko.js": "^0.1.0"
   },
   "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",

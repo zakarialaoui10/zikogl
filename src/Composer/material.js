@@ -2,7 +2,7 @@ import * as THREE from "three"
 import { 
     ZikoUIImage,
     ZikoUICanvas
- } from "ziko";
+ } from "ziko.js";
 import { 
     image2texture,
     canvas2texture
