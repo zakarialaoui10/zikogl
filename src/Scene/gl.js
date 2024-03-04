@@ -2,7 +2,7 @@ import * as THREE from "three";
 import {
     ZikoUIElement,
     ZikoHtml,
-} from "ziko.js"
+} from "ziko"
 import { ZikoCamera } from "../Camera";
 import { 
     ZikoThreeObject,

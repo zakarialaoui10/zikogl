@@ -1,4 +1,4 @@
-import { ZikoUIElement } from "ziko.js";
+import { ZikoUIElement } from "ziko";
 import * as THREE from "three"
 import { CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer.js';
 import { ZikoThreeSceneGl } from "./gl";

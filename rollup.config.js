@@ -6,7 +6,7 @@ import babel from '@rollup/plugin-babel';
 
 const banner= `
 /*
-  Project: ziko-three
+  Project: zikogl
   Author: Zakaria Elalaoui
   Date : ${new Date()}
   Git-Repo : https://github.com/zakarialaoui10/ziko.js
@@ -16,25 +16,26 @@ const banner= `
 `
 export default {
   input: 'src/index.js',
-  output: [{
-    file: 'dist/ziko-three.cjs',
+  output: [
+    {
+    file: 'dist/zikogl.cjs',
     format: 'cjs',
     banner,
   },{
-    file: 'dist/ziko-three.mjs',
+    file: 'dist/zikogl.mjs',
     format: 'es',
     banner,
   },
   {
-    file: 'dist/ziko-three.js',
+    file: 'dist/zikogl.js',
     format: 'umd',
-    name:"ZikoThree",
+    name:"ZikoGl",
     banner,
   },
   {
-    file: 'dist/ziko-three.min.js',
+    file: 'dist/zikogl.min.js',
     format: 'umd',
-    name:"ZikoThree",
+    name:"ZikoGl",
     banner,
     plugins:[terser({
       output: {
@@ -44,7 +45,7 @@ export default {
   },
   
 ],
-external: ["ziko.js"],
+external: ["ziko"],
   plugins: [
     resolve(), 
     commonjs(),

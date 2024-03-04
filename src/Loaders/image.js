@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import { ZikoUIImage } from "ziko.js";
+import { ZikoUIImage } from "ziko";
 const image2texture=Image=>{
     let img=null;
     if(Image instanceof ZikoUIImage)img = Image.element.src;
