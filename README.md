@@ -1,4 +1,1 @@
-zikojs plugin built on the top of threejs
-
-## Dependencies 
- ### Threejs
+ZikoGl is a [Zikojs]() plugin built on the top of [Threejs]()
