@@ -45,7 +45,7 @@ export default {
   },
   
 ],
-external: ["ziko"],
+external: ["Ziko"],
   plugins: [
     resolve(), 
     commonjs(),

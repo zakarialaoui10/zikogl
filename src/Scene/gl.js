@@ -1,8 +1,9 @@
 import * as THREE from "three";
 import {
     ZikoUIElement,
-    ZikoHtml,
+    //ZikoHtml,
 } from "ziko"
+import { Ziko } from "ziko";
 import { ZikoCamera } from "../Camera";
 import { 
     ZikoThreeObject,
@@ -23,8 +24,8 @@ class ZikoThreeSceneGl extends ZikoUIElement{
             last_intersected_uuid:null
         })
         Object.assign(this,SceneComposer.call(this))
-        this.figure=ZikoHtml("figure");
-        this.canvas=ZikoHtml("canvas")
+        this.figure=Ziko.UI.ZikoHtml("figure");
+        this.canvas=Ziko.UI.ZikoHtml("canvas")
         this.figure.append(this.canvas);
         this.element=this.figure.element;
         this.rendererGl=new THREE.WebGLRenderer({canvas:this.canvas.element});
@@ -111,7 +112,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         return this.cache.controls.orbit;
     }
 }
-const SceneGl=ZikoThreeSceneGl
+const SceneGl=(w,h)=>new ZikoThreeSceneGl(w,h)
 export {
     ZikoThreeSceneGl,
     SceneGl
