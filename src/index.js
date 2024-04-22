@@ -28,11 +28,11 @@ import{
     extrude3,
     UI3
 } from "./Mesh/index.js";
-const ZikoThree={
+const ZikoGl={
+    THREE,
     UI3,
     loadSVG,
     image2texture,
-    THREE,
     SceneGl,
     SceneCss,
     cube3,
@@ -54,17 +54,32 @@ const ZikoThree={
     extrude3,
     gridHelper3,
     polarHelper3,
-    ExtractAll:function(){
-            for (let i = 0; i < Object.keys(this).length; i++) {
-                globalThis[Object.keys(this)[i]] = Object.values(this)[i];
-        }
-        return this;
-    },
-    RemoveAll:function(){
-            for (let i = 0; i < Object.keys(this).length; i++) delete globalThis[Object.keys(this)[i]];   
-        return this;
-    }
 }
-
-//if(Ziko)Object.assign(Ziko.Graphics,{...ZikoThree})
-export default ZikoThree
+if ( globalThis.__ZikoGl__ ) {
+    console.warn( 'WARNING: Multiple instances of Zikogl.js being imported.' );
+	} else {
+		globalThis.__ZikoGl__={
+            ...ZikoGl,
+            ExtractAll: function () {
+                const keys = Object.keys(this);
+                for (let i = 0; i < keys.length; i++) {
+                    const key = keys[i];
+                    if (key !== 'ExtractAll' && key !== 'RemoveAll') {
+                        globalThis[key] = this[key];
+                    }
+                }
+                return this;
+            },
+            RemoveAll: function () {
+                const keys = Object.keys(this);
+                for (let i = 0; i < keys.length; i++) {
+                    const key = keys[i];
+                    if (key !== 'RemoveAll') {
+                        delete globalThis[key];
+                    }
+                }
+                return this;
+            }
+        };
+	}
+export default ZikoGl
