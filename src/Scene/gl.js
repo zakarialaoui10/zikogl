@@ -29,7 +29,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         //this.figure.append(this.canvas);
         //this.element=this.figure.element;
         this.rendererGl=new THREE.WebGLRenderer({canvas:this.canvas.element});
-        this.rendererTarget=this.rendererGl;
+        this.renderertarget=this.rendererGl;
 		this.sceneGl=new THREE.Scene();
         this.camera=ZikoCamera(w,h,0.1,1000);
         this.camera.currentCamera.position.z=10;
@@ -79,7 +79,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
 	}
     remove(...obj){
         if(obj.length==0){
-            if(this.Target.children.length) this.Target.removeChild(this.element);
+            if(this.target.children.length) this.target.removeChild(this.element);
           }
         else {
             obj.map((n,i)=>this.sceneGl.remove(obj[i].element));
@@ -88,26 +88,26 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         }
 		return this;
     }
-    forEachIntersectedItem(if_callback=()=>{},else_callback=()=>{}){
-        this.cache.raycaster.setFromCamera( this.cache.pointer, this.camera.currentCamera );
-        const intersects = this.cache.raycaster.intersectObjects( this.sceneGl.children ).filter(n=>{
-            return !(
-                (n.object.type.includes("Controls"))||
-                (n.object.tag==="helper")||
-                ["X","Y","Z","XYZ","XYZE","E"].includes(n.object.name)
-            )
-        })
-        const uuids=intersects.map(n=>n.object.uuid);
-        const intersectred_items=this.items.filter(n=>uuids.includes(n.element.uuid))
-        const not_intersectred_items=this.items.filter(n=>!uuids.includes(n.element.uuid))
-            for ( let i = 0; i < intersectred_items.length; i ++ ) {
-                console.log(intersectred_items[i])
-                intersectred_items[i].color("#ff00ff")    
-            }
-        return this;
+    // forEachIntersectedItem(if_callback=()=>{},else_callback=()=>{}){
+    //     this.cache.raycaster.setFromCamera( this.cache.pointer, this.camera.currentCamera );
+    //     const intersects = this.cache.raycaster.intersectObjects( this.sceneGl.children ).filter(n=>{
+    //         return !(
+    //             (n.object.type.includes("Controls"))||
+    //             (n.object.tag==="helper")||
+    //             ["X","Y","Z","XYZ","XYZE","E"].includes(n.object.name)
+    //         )
+    //     })
+    //     const uuids=intersects.map(n=>n.object.uuid);
+    //     const intersectred_items=this.items.filter(n=>uuids.includes(n.element.uuid))
+    //     const not_intersectred_items=this.items.filter(n=>!uuids.includes(n.element.uuid))
+    //         for ( let i = 0; i < intersectred_items.length; i ++ ) {
+    //             console.log(intersectred_items[i])
+    //             intersectred_items[i].color("#ff00ff")    
+    //         }
+    //     return this;
 
-        // should be used  with throttle or debounce
-    }
+    //     // should be used  with throttle or debounce
+    // }
     get orbit(){
         return this.cache.controls.orbit;
     }
