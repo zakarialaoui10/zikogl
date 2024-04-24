@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import {
     ZikoUIElement,
-    //ZikoHtml,
+    html
 } from "ziko"
-import { Ziko } from "ziko";
+import Ziko  from "ziko";
 import { ZikoCamera } from "../Camera";
 import { 
     ZikoThreeObject,
@@ -12,7 +12,7 @@ import { SceneComposer } from "../Composer/scene";
 import { waitElm } from "../Utils";
 class ZikoThreeSceneGl extends ZikoUIElement{
     constructor(w,h){
-        super()
+        super("figure","figure")
         Object.assign(this.cache,{
             type:"gl",
             controls:{
@@ -24,10 +24,10 @@ class ZikoThreeSceneGl extends ZikoUIElement{
             last_intersected_uuid:null
         })
         Object.assign(this,SceneComposer.call(this))
-        this.figure=Ziko.UI.ZikoHtml("figure");
-        this.canvas=Ziko.UI.ZikoHtml("canvas")
-        this.figure.append(this.canvas);
-        this.element=this.figure.element;
+        //this.figure=Ziko.UI.html("figure");
+        this.canvas=Ziko.UI.html("canvas").render(true,this.element)
+        //this.figure.append(this.canvas);
+        //this.element=this.figure.element;
         this.rendererGl=new THREE.WebGLRenderer({canvas:this.canvas.element});
         this.rendererTarget=this.rendererGl;
 		this.sceneGl=new THREE.Scene();
@@ -38,7 +38,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         this.renderGl()
         this.render();
         this.size(w,h);
-        this.WatchSize(()=>this.maintain())
+        this.watchSize(()=>this.maintain())
         //this.useOrbitCOntrols()
         waitElm(this.element.element).then(()=>{
             this.useOrbitControls()

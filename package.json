@@ -23,8 +23,7 @@
   "author": "zakaria elalaoui",
   "license": "MIT",
   "dependencies": {
-    "three": "^0.158.0",
-    "ziko": "^0.0.1"
+    "three": "^0.158.0"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",

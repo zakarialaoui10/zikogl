@@ -82,4 +82,6 @@ if ( globalThis.__ZikoGl__ ) {
             }
         };
 	}
+export * from "./Scene";
+export * from "./Mesh";
 export default ZikoGl

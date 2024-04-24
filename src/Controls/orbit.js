@@ -1,4 +1,5 @@
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { Vector3,Quaternion } from 'three/src/Three.js';
 class ZikoThreeOrbitControls{
     #TARGET
     constructor(target){
@@ -6,16 +7,16 @@ class ZikoThreeOrbitControls{
         this.control=new OrbitControls(target.camera.currentCamera,target.rendererTarget.domElement);
         this.isPaused=false;
         this.saved_state={
-            position:new THREE.Vector3(),
-            quaternion:new THREE.Quaternion()
+            position:new Vector3(),
+            quaternion:new Quaternion()
         }
         this.onChange()
 
     }
     get currentState(){
         const state={
-            position:new THREE.Vector3(),
-            quaternion:new THREE.Quaternion()
+            position:new Vector3(),
+            quaternion:new Quaternion()
         }
         state.position.copy(this.#TARGET.camera.currentCamera.position);
         state.quaternion.copy(this.#TARGET.camera.currentCamera.quaternion);
@@ -28,13 +29,13 @@ class ZikoThreeOrbitControls{
     }
     useState(state,renderGl=true,renderCss=true){
         let {position,quaternion}=state;
-		if(!(position instanceof THREE.Vector3)){
+		if(!(position instanceof Vector3)){
 			const {x,y,z}=position;
-			position=new THREE.Vector3(x,y,z)
+			position=new Vector3(x,y,z)
 		}
-		if(!(quaternion instanceof THREE.Quaternion)){
+		if(!(quaternion instanceof Quaternion)){
 			const {_x,_y,_z,_w}=quaternion;
-			quaternion=new THREE.Quaternion(_x,_y,_z,_w)
+			quaternion=new Quaternion(_x,_y,_z,_w)
 		}
 		this.#TARGET.camera.currentCamera.position.copy(position);
         this.#TARGET.camera.currentCamera.quaternion.copy(quaternion);
