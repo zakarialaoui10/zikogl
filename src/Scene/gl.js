@@ -39,7 +39,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         this.render();
         this.size(w,h);
         this.watchSize(()=>this.maintain())
-        //this.useOrbitCOntrols()
+        this.useOrbitControls()
         waitElm(this.element.element).then(()=>{
             this.useOrbitControls()
         })

@@ -11,7 +11,7 @@ class ZikoThreeSceneCss extends ZikoThreeSceneGl{
         this.rendererCss=new CSS3DRenderer();
         this.rendererCss.domElement.appendChild(this.rendererGl.domElement );
         this.rendererTarget=this.rendererCss;
-        this.figure.append(this.canvas);
+        this.canvas.setTarget(this.element)
         this.element.appendChild(this.rendererCss.domElement);
         this.canvas.style({
             position:"absolute"
