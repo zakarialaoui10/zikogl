@@ -26,11 +26,11 @@ import{
     groupe3,
     svg3,
     extrude3,
-    UI3
+    ui3
 } from "./Mesh/index.js";
 const ZikoGl={
     THREE,
-    UI3,
+    ui3,
     loadSVG,
     image2texture,
     SceneGl,

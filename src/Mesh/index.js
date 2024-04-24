@@ -22,5 +22,5 @@ export {
     extrude3
  } from "./Meshes/extrude.js";
 export {
-    UI3
+    ui3
 } from "./Meshes/css.js";

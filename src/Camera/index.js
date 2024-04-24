@@ -1,5 +1,11 @@
-import {PerspectiveCamera,OrthographicCamera,CameraHelper} from "three";
-import * as THREE from "three"
+import {
+	PerspectiveCamera,
+	OrthographicCamera,
+	CameraHelper,
+	Vector3,
+	Quaternion,
+	MathUtils
+} from "three";
 class ZikoTHREECamera{
 	#PERSPECTIVE_CAMERA
 	#ORTHOGRAPHIC_CAMERA
@@ -15,8 +21,8 @@ class ZikoTHREECamera{
 		this.pD=10;
 		this.oD=120;
 		this.saved_state={
-            position:new THREE.Vector3(),
-            quaternion:new THREE.Quaternion()
+            position:new Vector3(),
+            quaternion:new Quaternion()
         }
 	}
 	#maintain(){
@@ -34,13 +40,13 @@ class ZikoTHREECamera{
     }
 	useState(state,renderGl=true,renderCss=true){
 		let {position,quaternion}=state;
-		if(!(position instanceof THREE.Vector3)){
+		if(!(position instanceof Vector3)){
 			const {x,y,z}=position;
-			position=new THREE.Vector3(x,y,z)
+			position=new Vector3(x,y,z)
 		}
-		if(!(quaternion instanceof THREE.Quaternion)){
+		if(!(quaternion instanceof Quaternion)){
 			const {_x,_y,_z,_w}=quaternion;
-			quaternion=new THREE.Quaternion(_x,_y,_z,_w)
+			quaternion=new Quaternion(_x,_y,_z,_w)
 		}
 		this.currentCamera.position.copy(position);
         this.currentCamera.quaternion.copy(quaternion);
@@ -64,7 +70,7 @@ class ZikoTHREECamera{
 		return this.w/this.h;
 	}
 	get halfFovV(){
-		return THREE.MathUtils.DEG2RAD * this.fov * 0.5;
+		return MathUtils.DEG2RAD * this.fov * 0.5;
 	}
 	get halfFovH(){
 		return Math.atan((this.parent.Width/this.parent.Height) * Math.tan( this.halfFovV ) );
@@ -155,4 +161,4 @@ class ZikoTHREECamera{
 	}
 }
 
-export const ZikoCamera=(w,h,n,f)=>new ZikoTHREECamera(w,h,n,f)
+export const ZikoCamera=(w,h,n,f)=>new ZikoTHREECamera(w,h,n,f);

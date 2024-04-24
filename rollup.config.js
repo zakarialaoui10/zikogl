@@ -21,22 +21,28 @@ export default {
     file: 'dist/zikogl.cjs',
     format: 'cjs',
     banner,
+    exports: "named"
+
   },{
     file: 'dist/zikogl.mjs',
     format: 'es',
     banner,
+    exports: "named"
+
   },
   {
     file: 'dist/zikogl.js',
     format: 'umd',
     name:"ZikoGl",
     banner,
+    exports: "named"
   },
   {
     file: 'dist/zikogl.min.js',
     format: 'umd',
     name:"ZikoGl",
     banner,
+    exports: "named",
     plugins:[terser({
       output: {
         comments: (node, { type, value }) => type === 'comment2' && value.includes('Author'),

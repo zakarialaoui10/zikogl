@@ -1,4 +1,4 @@
-import * as THREE from "three"
+import { Mesh } from "three";
 import {
     GeometryComposer,
     MaterialComposer
@@ -10,7 +10,7 @@ class ZikoThreeObject{
         Object.assign(this, GeometryComposer.call(this));
     }
     _Maintain(){
-        this.element=new THREE.Mesh(this.geometry,this.material.currentMaterial);
+        this.element=new Mesh(this.geometry,this.material.currentMaterial);
         if(this.parent)this.parent.renderGl();
         return this;
     }
@@ -64,7 +64,7 @@ class ZikoThreeMesh extends ZikoThreeObject{
         this.cache={
             type:"gl"
         }
-        this.element=new THREE.Mesh(Geometry,Material);
+        this.element=new Mesh(Geometry,Material);
         this.material=ZikoMaterial(this.element,{});
         Object.assign(this, MaterialComposer.call(this));
     }
