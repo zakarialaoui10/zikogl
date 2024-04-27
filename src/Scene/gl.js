@@ -88,26 +88,26 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         }
 		return this;
     }
-    forEachIntersectedItem(if_callback=()=>{},else_callback=()=>{}){
-        this.cache.raycaster.setFromCamera( this.cache.pointer, this.camera.currentCamera );
-        const intersects = this.cache.raycaster.intersectObjects( this.sceneGl.children ).filter(n=>{
-            return !(
-                (n.object.type.includes("Controls"))||
-                (n.object.tag==="helper")||
-                ["X","Y","Z","XYZ","XYZE","E"].includes(n.object.name)
-            )
-        })
-        const uuids=intersects.map(n=>n.object.uuid);
-        const intersectred_items=this.items.filter(n=>uuids.includes(n.element.uuid))
-        const not_intersectred_items=this.items.filter(n=>!uuids.includes(n.element.uuid))
-            for ( let i = 0; i < intersectred_items.length; i ++ ) {
-                console.log(intersectred_items[i])
-                intersectred_items[i].color("#ff00ff")    
-            }
-        return this;
+    // forEachIntersectedItem(if_callback=()=>{},else_callback=()=>{}){
+    //     this.cache.raycaster.setFromCamera( this.cache.pointer, this.camera.currentCamera );
+    //     const intersects = this.cache.raycaster.intersectObjects( this.sceneGl.children ).filter(n=>{
+    //         return !(
+    //             (n.object.type.includes("Controls"))||
+    //             (n.object.tag==="helper")||
+    //             ["X","Y","Z","XYZ","XYZE","E"].includes(n.object.name)
+    //         )
+    //     })
+    //     const uuids=intersects.map(n=>n.object.uuid);
+    //     const intersectred_items=this.items.filter(n=>uuids.includes(n.element.uuid))
+    //     const not_intersectred_items=this.items.filter(n=>!uuids.includes(n.element.uuid))
+    //         for ( let i = 0; i < intersectred_items.length; i ++ ) {
+    //             console.log(intersectred_items[i])
+    //             intersectred_items[i].color("#ff00ff")    
+    //         }
+    //     return this;
 
-        // should be used  with throttle or debounce
-    }
+    //     // should be used  with throttle or debounce
+    // }
     get orbit(){
         return this.cache.controls.orbit;
     }
