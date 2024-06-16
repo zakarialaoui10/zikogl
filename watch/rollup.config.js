@@ -21,7 +21,10 @@ export default {
     format: 'umd',
     name:"ZikoGl",
     banner,
-    exports: "named"
+    exports: "named",
+    globals: {
+      Ziko: 'Ziko'
+    }
   }
 ],
 external: ["Ziko"],

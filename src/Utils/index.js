@@ -1,3 +1,12 @@
+const mixin = (target, ...sources) => {
+    sources.forEach(source => {
+        Object.getOwnPropertyNames(source.prototype).forEach(name => {
+            if (name !== 'constructor') {
+                target[name] = source.prototype[name];
+            }
+        });
+    });
+}
 const waitElm=(UIElement)=>{
     return new Promise(resolve => {
         if (UIElement) {
@@ -15,4 +24,4 @@ const waitElm=(UIElement)=>{
         });
     });
   }
-export {waitElm}
+export {mixin,waitElm}

@@ -1,13 +1,20 @@
 import { Mesh } from "three";
 import {
-    GeometryComposer,
-    MaterialComposer
-} from "../Composer/index.js"
-import { ZikoMaterial } from "./Materials/index.js";
+    ZikoThreeGeometry,
+    ZikoThreeMaterial
+} from "./Methodes/index.js"
+// import {
+//     GeometryComposer,
+// } from "../Composer/index.js"
+//import { MaterialComposer } from "./Materials/MaterialComposer.js";
+import { ZikoMaterialsList } from "./Materials/MaterialList.js";
+//import { ZikoThreeMaterial } from "./Methodes/material.js";
+import { mixin } from "../Utils/index.js";
 class ZikoThreeObject{
     constructor(){
         this.parent=null; // Scene
-        Object.assign(this, GeometryComposer.call(this));
+        //Object.assign(this, GeometryComposer.call(this));
+        mixin(this.__proto__,ZikoThreeGeometry);
     }
     _Maintain(){
         this.element=new Mesh(this.geometry,this.material.currentMaterial);
@@ -65,8 +72,9 @@ class ZikoThreeMesh extends ZikoThreeObject{
             type:"gl"
         }
         this.element=new Mesh(Geometry,Material);
-        this.material=ZikoMaterial(this.element,{});
-        Object.assign(this, MaterialComposer.call(this));
+        this.material=ZikoMaterialsList(this.element,{});
+        //Object.assign(this, MaterialComposer.call(this));
+        mixin(this.__proto__,ZikoThreeMaterial)
     }
     get isHovered(){
         //this.parent.renderGl()

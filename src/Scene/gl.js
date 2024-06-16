@@ -8,7 +8,7 @@ import { ZikoCamera } from "../Camera";
 import { 
     ZikoThreeObject,
  } from "../Mesh/ZikoThreeMesh";
-import { SceneComposer } from "../Composer/scene";
+import { SceneComposer } from "./sceneComposer.js";
 import { waitElm } from "../Utils";
 class ZikoThreeSceneGl extends ZikoUIElement{
     constructor(w,h){

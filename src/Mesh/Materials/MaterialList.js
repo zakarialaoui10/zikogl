@@ -1,5 +1,5 @@
 import * as THREE from "three"
-class ZikoTHREEMaterial{
+class ZikoTHREEMaterialsList{
     #MESH_BASIC_MATERIAL=null;
     #MESH_PHONG_MATERIAL=null;
     #MESH_DEPTH_MATERIAL=null;
@@ -88,5 +88,5 @@ class ZikoTHREEMaterial{
         return this;      
     }
 }
-const ZikoMaterial=(mesh,attributes={})=>new ZikoTHREEMaterial(mesh,attributes);
-export {ZikoMaterial}
+const ZikoMaterialsList=(mesh,attributes={})=>new ZikoTHREEMaterialsList(mesh,attributes);
+export {ZikoMaterialsList}
