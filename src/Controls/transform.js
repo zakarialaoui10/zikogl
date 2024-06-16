@@ -65,4 +65,5 @@ class ZikoThreeTransformControls{
 }
 
 const ZikoTransformControls=target=>new ZikoThreeTransformControls(target);
+const useTransformControl=(parent,child)=>new ZikoThreeTransformControls(parent).attach(child);
 export {ZikoTransformControls}

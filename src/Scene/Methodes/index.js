@@ -1,14 +1,13 @@
 import * as THREE from "three"
-import { waitElm } from "../Utils";
-import { image2texture } from "../Loaders/image";
 import { ZikoUIImage } from "ziko";
+import { waitElm } from "../../Utils";
+import { image2texture } from "../../Loaders/image.js";
 import { 
     ZikoOrbitControls, 
     ZikoTransformControls 
-} from "../Controls";
-export function SceneComposer(){
-    return {
-        size:function(w = "100%", h = "100%") {
+} from "../../Controls/index.js";
+class SceneMethodes{
+        size(w = "100%", h = "100%") {
             if(typeof(w)==="number")w=w+"px";
             if(typeof(h)==="number")h=h+"px";
             waitElm(this.element).then((e)=>{
@@ -21,11 +20,11 @@ export function SceneComposer(){
                 this.renderGl();
             })
             return this;
-        },
-        clone:function(){
+        }
+        clone(){
 
-        },
-        background:function(texture){
+        }
+        background(texture){
             if(typeof texture === "string"){
                 if((texture.length===7||texture.length===4)&&texture[0]==="#")this.sceneGl.background=new THREE.Color(texture);
             }
@@ -37,43 +36,43 @@ export function SceneComposer(){
             }
             this.renderGl();
             return this;
-        },
-        posX:function(x=this.POSX){
+        }
+        posX(x=this.POSX){
 			this.sceneGl.position.x=x;
 			this.renderGl();
 			return this;
-        },
-        posY:function(y=this.POSY){
+        }
+        posY(y=this.POSY){
 			this.sceneGl.position.y=y;
 			this.renderGl();
 			return this;
-        },
-        posZ:function(z=this.POSZ){
+        }
+        posZ(z=this.POSZ){
 			this.sceneGl.position.z=z;
 			this.renderGl();
 			return this;
-        },
-        pos:function(x,y,z){
+        }
+        pos(x,y,z){
 			this.sceneGl.rotation.set(x,y,z);
 			this.renderGl();
 			return this;
-        },
-		tarnslateX:function(dx=0){
+        }
+		tarnslateX(dx=0){
 			this.sceneGl.position.x=this.POSX+dx;
 			this.renderGl();
 			return this;
-        },
-        translateY:function(dy=0){
+        }
+        translateY(dy=0){
 			this.sceneGl.position.y=this.POSY+dy;
 			this.renderGl();
 			return this;
-        },
-        translateZ:function(dz=0){
+        }
+        translateZ(dz=0){
 			this.sceneGl.position.z=this.POSZ+dz;
 			this.renderGl();
 			return this;
-        },
-        translate:function(dx=0,dy=0,dz=0){
+        }
+        translate(dx=0,dy=0,dz=0){
 			this.sceneGl.rotation.set(
 				this.POSX+dx,
 				this.POSY+dy,
@@ -81,57 +80,57 @@ export function SceneComposer(){
 				);
 			this.renderGl();
 			return this;
-        },
-        rotX:function(x=this.ROTX){
+        }
+        rotX(x=this.ROTX){
 			this.sceneGl.rotation.x=x;
 			this.renderGl();
 			return this;
-        },
-        rotY:function(y=this.ROTY){
+        }
+        rotY(y=this.ROTY){
 			this.sceneGl.rotation.y=y;
 			this.renderGl();
 			return this;            
-        },
-        rotZ:function(z=this.ROTZ){
+        }
+        rotZ(z=this.ROTZ){
 			this.sceneGl.rotation.z=z;
 			this.renderGl();
 			return this;            
-        },
-        rot:function(x,y,z){
+        }
+        rot(x,y,z){
 			this.sceneGl.rotation.set(x,y,z);
 			this.renderGl();
 			return this;
-        },
-        fog:function(color,near,far){
+        }
+        fog(color,near,far){
 
-        },
+        }
         toImage(){
 
-        },
+        }
         toVideo(){
 
-        },
-        fromJson:function(color,near,far){
+        }
+        fromJson(color,near,far){
 
-        },
-        toJson:function(){
+        }
+        toJson(){
 
-        },
+        }
         useOrbitControls(){
             if(!this.cache.controls.orbit)this.cache.controls.orbit=ZikoOrbitControls(this);
             return this;
-        },
+        }
         useTransformControls(){
             if(!this.cache.controls.transform)this.cache.controls.transform=ZikoTransformControls(this);
             return this;
-        },
+        }
         usePerspectiveCamera(){
             this.camera.usePerspective();
             return this;
-        },
+        }
         useOrthographicCamera(){
             this.camera.useOrthographic();
             return this;
         }
-    }
 }
+export { SceneMethodes }

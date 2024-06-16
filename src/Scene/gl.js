@@ -8,8 +8,8 @@ import { ZikoCamera } from "../Camera";
 import { 
     ZikoThreeObject,
  } from "../Mesh/ZikoThreeMesh";
-import { SceneComposer } from "./sceneComposer.js";
-import { waitElm } from "../Utils";
+import { SceneMethodes } from "./Methodes/index.js";
+import { mixin, waitElm } from "../Utils";
 class ZikoThreeSceneGl extends ZikoUIElement{
     constructor(w,h){
         super("figure","figure")
@@ -23,7 +23,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
 		    raycaster:new THREE.Raycaster(),
             last_intersected_uuid:null
         })
-        Object.assign(this,SceneComposer.call(this))
+        mixin(this.__proto__,SceneMethodes)
         //this.figure=Ziko.UI.html("figure");
         this.canvas=Ziko.UI.html("canvas").render(true,this.element)
         //this.figure.append(this.canvas);

@@ -1,4 +1,3 @@
-//import * as THREE from "three"
 import { CanvasTexture } from "three";
 import { ZikoUICanvas } from "ziko";
 const canvas2texture=Canvas=>{

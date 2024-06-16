@@ -73,7 +73,7 @@ class ZikoTHREECamera{
 		return MathUtils.DEG2RAD * this.fov * 0.5;
 	}
 	get halfFovH(){
-		return Math.atan((this.parent.Width/this.parent.Height) * Math.tan( this.halfFovV ) );
+		return Math.atan((this.parent.width/this.parent.height) * Math.tan( this.halfFovV ) );
 	}
 	get halfH(){
 		return this.pD*Math.tan(this.halfFovH)
@@ -152,7 +152,6 @@ class ZikoTHREECamera{
 		this.currentCamera= this.#ORTHOGRAPHIC_CAMERA;
 		this.currentCamera.position.set(0,0,this.oD);
 		this.parent.cache.controls.orbit.control.object=this.currentCamera;
-
 		this.#maintain()
 		return this;
 	}

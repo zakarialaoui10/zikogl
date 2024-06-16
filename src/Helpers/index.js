@@ -1,10 +1,12 @@
+import { ZikoThreeGeometry } from "../Mesh/Methodes/index.js"
+import { mixin } from "../Utils/index.js";
 class ZikoThreeHelper {
     constructor(){
         this.element=null;
-        Object.assign(this, GeometryComposer.call(this));      
+        Object.assign(this, GeometryComposer.call(this));  
+        mixin(this.__proto__,ZikoThreeGeometry)    
     }
 }
-import { GeometryComposer } from "../Composer";
 class ZikoThreeGridHelper extends ZikoThreeHelper{
     constructor(n,m,color1,color2){
         super()
