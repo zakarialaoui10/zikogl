@@ -1,4 +1,5 @@
-import { Mesh } from "three";
+import { Texture, Color, Mesh, CanvasTexture } from "three";
+import { ZikoUICanvas, ZikoUIElement, ZikoUIImage, ZikoUISvg, ZikoUIVideo } from "ziko";
 import {
     ZikoThreeGeometry,
     ZikoThreeMaterial,
@@ -8,6 +9,9 @@ import { mixin } from "../Utils/index.js";
 class ZikoThreeObject{
     constructor(){
         this.parent=null; // Scene
+        this.cache={
+            type:null
+        }
         mixin(this.__proto__,ZikoThreeGeometry);
     }
     _Maintain(){
@@ -80,7 +84,55 @@ class ZikoThreeMesh extends ZikoThreeObject{
     get Material(){
         return this.element.material;
     }
+    style(materialAttr,render=true){
+        for(let key in materialAttr){
+            let value = materialAttr[key];
+            switch(key){
+                case "color" : this.element.material.color=new Color(value);break;
+                case "texture" : {
+                    if(["number","string"].includes(typeof value)) this.element.material.color=new Color(value);
+                    if(value instanceof Color) this.element.material.color=value;
+                    if(value instanceof Texture){
+                        if(value instanceof CanvasTexture){
+                            
+                        }
+                    }
+                    if(value instanceof ZikoUIElement){
+                        if(value instanceof ZikoUIImage){
 
+                        }
+                        if(value instanceof ZikoUISvg){
+
+                        }
+                        if(value instanceof ZikoUICanvas){
+
+                        }
+                        if(value instanceof ZikoUIVideo){
+
+                        }
+                    }
+                    if(value instanceof HTMLElement){
+                        if(value instanceof HTMLImageElement){
+
+                        }
+                        if(value instanceof HTMLCanvasElement){
+
+                        }
+                        if(value instanceof HTMLVideoElement){
+
+                        }
+                    }
+                    if(value instanceof SVGSVGElement){
+
+                    }
+
+                } ; break;
+                default : this.element.material[key]=materialAttr[key];
+            }
+        }
+        if(render)this.parent.renderGl();
+        return this;
+    }
 }
 export {
     ZikoThreeObject,

@@ -1,3 +1,7 @@
+import {
+    ZikoUIImage,
+    ZikoUICanvas
+} from "ziko"
 class ZikoThreeMaterial{
     useBasic(){
         this.material.useMeshBasicMaterial();

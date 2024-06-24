@@ -18,7 +18,7 @@ class ZikoThreeGroupe extends ZikoThreeObject{
 			if(obj[i] instanceof THREE.Mesh){
 				obj[i]=new ZikoThreeMesh(obj);
 			}
-			this.element.add(obj[i].mesh);
+			this.element.add(obj[i].element);
 			this.items.push(obj[i])
 		}
        return this;
@@ -28,7 +28,7 @@ class ZikoThreeGroupe extends ZikoThreeObject{
             //remove groupe
         }
 		else for(let i=0;i<obj.length;i++){
-			this.element.remove(obj[i].mesh);
+			this.element.remove(obj[i].element);
 		}
        return this;
 	}
