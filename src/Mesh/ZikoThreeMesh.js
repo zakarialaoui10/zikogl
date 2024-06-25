@@ -6,6 +6,7 @@ import {
     MaterialType
 } from "./Methodes/index.js"
 import { mixin } from "../Utils/index.js";
+import { ZikoThreeSceneGl } from "../Scene/gl.js";
 class ZikoThreeObject{
     constructor(){
         this.parent=null; // Scene
@@ -20,7 +21,7 @@ class ZikoThreeObject{
         return this;
     }
     render(){
-        if(this.parent)this.parent.renderGl();
+        if(this.parent instanceof ZikoThreeSceneGl )this.parent.renderGl();
         return this;
     }
     remove(){
@@ -88,6 +89,7 @@ class ZikoThreeMesh extends ZikoThreeObject{
         for(let key in materialAttr){
             let value = materialAttr[key];
             switch(key){
+                case "visible":this.element.visible=materialAttr[key];break;
                 case "color" : this.element.material.color=new Color(value);break;
                 case "texture" : {
                     if(["number","string"].includes(typeof value)) this.element.material.color=new Color(value);
@@ -130,7 +132,7 @@ class ZikoThreeMesh extends ZikoThreeObject{
                 default : this.element.material[key]=materialAttr[key];
             }
         }
-        if(render)this.parent.renderGl();
+        if(render)this.parent.render();
         return this;
     }
 }
