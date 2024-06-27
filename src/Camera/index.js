@@ -9,6 +9,10 @@ import {
 class ZikoTHREECamera{
 	#PERSPECTIVE_CAMERA
 	#ORTHOGRAPHIC_CAMERA
+	#SWITCH_STATE={
+		position:new Vector3(),
+        quaternion:new Quaternion()	
+	}
 	constructor(w,h,near=0.1,far=1000){
 		this.parent=null;
 		this.w=w;
@@ -18,26 +22,37 @@ class ZikoTHREECamera{
 		this.#PERSPECTIVE_CAMERA=new PerspectiveCamera(this.fov,this.aspect,this.near,this.far);
 		this.currentCamera=this.#PERSPECTIVE_CAMERA;
 		this.fov=50;
-		this.pD=10;
-		this.oD=120;
-		this.saved_state={
-            position:new Vector3(),
-            quaternion:new Quaternion()
-        }
+		this.perspectiveDistance=10;
+		this.orthographicDistance=120;
+		this.__cache__={
+			saved_state:{
+				position:new Vector3(),
+				quaternion:new Quaternion()
+			}
+		}
 	}
 	#maintain(){
 		if(this.parent)this.parent.renderGl()
 		return this;
 	}
 	save(){
-        this.saved_state.position.copy(this.currentCamera.position);
-        this.saved_state.quaternion.copy(this.currentCamera.quaternion);
+        this.__cache__.saved_state.position.copy(this.currentCamera.position);
+        this.__cache__.saved_state.quaternion.copy(this.currentCamera.quaternion);
         return this;
     }
     restore(renderGl=false,renderCss=false){
-		this.useState(this.saved_state,renderGl,renderCss)
+		this.useState(this.__cache__.saved_state,renderGl,renderCss)
         return this;
     }
+	#save_for_switch(){
+		this.#SWITCH_STATE.position.copy(this.currentCamera.position);
+        this.#SWITCH_STATE.quaternion.copy(this.currentCamera.quaternion);
+        return this;
+	}
+	#restore_for_switch(){
+		this.useState(this.#SWITCH_STATE,true,true)
+		return this;
+	}
 	useState(state,renderGl=true,renderCss=true){
 		let {position,quaternion}=state;
 		if(!(position instanceof Vector3)){
@@ -51,20 +66,20 @@ class ZikoTHREECamera{
 		this.currentCamera.position.copy(position);
         this.currentCamera.quaternion.copy(quaternion);
 		this.currentCamera.updateMatrixWorld();
-		if(renderGl)this.parent?.renderGl()
-		if(renderCss)this.parent?.renderCss()
+		if(renderGl && this.parent.cache.type === "gl")this.parent?.renderGl()
+		if(renderCss && this.parent.cache.type === "css")this.parent?.renderCss()
 	}
 	get left(){
-		return -this.pD*Math.tan(this.halfFovH);
+		return -this.perspectiveDistance*Math.tan(this.halfFovH);
 	}
 	get right(){
-		return this.pD*Math.tan(this.halfFovH);
+		return this.perspectiveDistance*Math.tan(this.halfFovH);
 	}
 	get top(){
-		return this.pD*Math.tan(this.halfFovV);
+		return this.perspectiveDistance*Math.tan(this.halfFovV);
 	}
 	get bottom(){
-		return -this.pD*Math.tan(this.halfFovV);
+		return -this.perspectiveDistance*Math.tan(this.halfFovV);
 	}
 	get aspect(){
 		return this.w/this.h;
@@ -76,10 +91,10 @@ class ZikoTHREECamera{
 		return Math.atan((this.parent.width/this.parent.height) * Math.tan( this.halfFovV ) );
 	}
 	get halfH(){
-		return this.pD*Math.tan(this.halfFovH)
+		return this.perspectiveDistance*Math.tan(this.halfFovH)
 	}
 	get halfV(){
-		return this.pD*Math.tan(this.halfFovV)
+		return this.perspectiveDistance*Math.tan(this.halfFovV)
 	}
 	posX(x=this.px){
 		this.currentCamera.position.x=x;
@@ -140,19 +155,19 @@ class ZikoTHREECamera{
 		return this;
 	}
 	usePerspective(){
+		this.#save_for_switch()
 		if(!this.#PERSPECTIVE_CAMERA)this.#PERSPECTIVE_CAMERA=new PerspectiveCamera(this.fov,this.aspect,this.near,this.far);
 		this.currentCamera=this.#PERSPECTIVE_CAMERA;
-		this.currentCamera.position.set(0,0,this.pD);
-		this.parent.cache.controls.orbit.control.object=this.currentCamera;
-		this.#maintain()
+		if(this.parent.cache.controls.orbit)this.parent.cache.controls.orbit.control.object=this.currentCamera;
+		this.#restore_for_switch();
 		return this;
 	}
 	useOrthographic(){
+		this.#save_for_switch()
 		if(!this.#ORTHOGRAPHIC_CAMERA)this.#ORTHOGRAPHIC_CAMERA=new OrthographicCamera(this.left,this.right,this.top,this.bottom,this.near,this.far);
 		this.currentCamera= this.#ORTHOGRAPHIC_CAMERA;
-		this.currentCamera.position.set(0,0,this.oD);
-		this.parent.cache.controls.orbit.control.object=this.currentCamera;
-		this.#maintain()
+		if(this.parent.cache.controls.orbit)this.parent.cache.controls.orbit.control.object=this.currentCamera;
+		this.#restore_for_switch();
 		return this;
 	}
 	get Helper(){

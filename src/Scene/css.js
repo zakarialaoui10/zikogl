@@ -17,7 +17,8 @@ class ZikoThreeSceneCss extends ZikoThreeSceneGl{
             position:"absolute"
         })
         this.useOrbitControls()
-        this.cache.controls.orbit.onChange(()=>{this.renderGl().renderCss()})
+        this.cache.controls.orbit.onChange(()=>{this.renderGl().renderCss()});
+        this.cache.type="css";
     }
     renderCss(){
         this.rendererCss.render(this.sceneCss,this.camera.currentCamera);
