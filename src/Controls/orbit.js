@@ -6,9 +6,11 @@ class ZikoThreeOrbitControls{
         this.#TARGET=target;
         this.control=new OrbitControls(target.camera.currentCamera,target.rendererTarget.domElement);
         this.isPaused=false;
-        this.saved_state={
-            position:new Vector3(),
-            quaternion:new Quaternion()
+        this.__cache__={
+            saved_state:{
+                position:new Vector3(),
+                quaternion:new Quaternion()
+            }   
         }
         this.onChange()
 
@@ -23,8 +25,8 @@ class ZikoThreeOrbitControls{
         return state;
     }
     save(){
-        this.saved_state.position.copy(this.#TARGET.camera.currentCamera.position);
-        this.saved_state.quaternion.copy(this.#TARGET.camera.currentCamera.quaternion);
+        this.__cache__.saved_state.position.copy(this.#TARGET.camera.currentCamera.position);
+        this.__cache__.saved_state.quaternion.copy(this.#TARGET.camera.currentCamera.quaternion);
         return this;
     }
     useState(state,renderGl=true,renderCss=true){
@@ -44,7 +46,7 @@ class ZikoThreeOrbitControls{
 		if(renderCss)this.#TARGET?.renderCss()
 	}
     restore(renderGl=false,renderCss=false){
-        this.useState(this.saved_state,renderGl,renderCss)
+        this.useState(this.__cache__.saved_state,renderGl,renderCss)
         return this;
     }
     enable(){

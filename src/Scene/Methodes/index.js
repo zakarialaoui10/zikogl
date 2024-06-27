@@ -4,7 +4,8 @@ import { waitElm } from "../../Utils";
 import { image2texture } from "../../Loaders/image.js";
 import { 
     ZikoOrbitControls, 
-    ZikoTransformControls 
+    ZikoTransformControls,
+    ZikoMapControls,
 } from "../../Controls/index.js";
 class SceneMethodes{
         size(w = "100%", h = "100%") {
@@ -118,10 +119,16 @@ class SceneMethodes{
         }
         useOrbitControls(){
             if(!this.cache.controls.orbit)this.cache.controls.orbit=ZikoOrbitControls(this);
+            this.cache.controls?.map?.disable();
             return this;
         }
         useTransformControls(){
             if(!this.cache.controls.transform)this.cache.controls.transform=ZikoTransformControls(this);
+            return this;
+        }
+        useMapControls(){
+            if(!this.cache.controls.map)this.cache.controls.map=ZikoMapControls(this);
+            this.cache.controls?.orbit?.disable();
             return this;
         }
         usePerspectiveCamera(){

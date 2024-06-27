@@ -46,7 +46,7 @@ class ZikoThreeTransformControls{
         });
         this.control.addEventListener('dragging-changed',( event )=>{
             if(this.#TARGET.cache.controls.orbit){
-                event.value?this.#TARGET.cache.controls.orbit.disable():this.#TARGET.cache.controls.orbit.enable()
+                event.value?this.#TARGET.cache.controls.orbit.disable():this.#TARGET.cache.controls.orbit.enable();
             }
             //console.log(event.value)
             //this.#TARGET.cache.controls.orbit.enabled = ! event.value;

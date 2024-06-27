@@ -4,3 +4,4 @@ export {
  export {
     ZikoTransformControls
  } from "./transform"
+ export * from "./map"
