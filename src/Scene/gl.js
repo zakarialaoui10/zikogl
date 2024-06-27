@@ -111,6 +111,9 @@ class ZikoThreeSceneGl extends ZikoUIElement{
     get orbit(){
         return this.cache.controls.orbit;
     }
+    get controls(){
+        return this.cache.controls;
+    }
 }
 const SceneGl=(w,h)=>new ZikoThreeSceneGl(w,h)
 export {
