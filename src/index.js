@@ -4,7 +4,10 @@ import { SceneCss } from "./Scene/css.js";
 import { image2texture } from "./Loaders/image.js";
 import { loadSVG } from "./Loaders/svg.js";
 //import { extrudeSvg } from "./Mesh/Geometries/index.js";
-import { useTransformControl } from "./Use";
+import { 
+    useAmbientLight,
+    useTransformControls
+ } from "./Use";
 import { 
     gridHelper3,
     polarHelper3
@@ -29,6 +32,7 @@ import{
     extrude3,
     ui3
 } from "./Mesh/index.js";
+import { useDragControls } from "./Controls/drag.js";
 const ZikoGl={
     THREE,
     ui3,
@@ -55,7 +59,9 @@ const ZikoGl={
     extrude3,
     gridHelper3,
     polarHelper3,
-    useTransformControl
+    useAmbientLight,
+    useTransformControls,
+    useDragControls
 }
 if ( globalThis.__ZikoGl__ ) {
     console.warn( 'WARNING: Multiple instances of Zikogl.js being imported.' );

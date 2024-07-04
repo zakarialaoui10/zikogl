@@ -1,12 +1,12 @@
 import * as THREE from "three"
 import { ZikoUIImage } from "ziko";
-import { waitElm } from "../../Utils";
-import { image2texture } from "../../Loaders/image.js";
+import { waitElm } from "../Utils/index.js";
+import { image2texture } from "../Loaders/image.js";
 import { 
     ZikoOrbitControls, 
     ZikoTransformControls,
     ZikoMapControls,
-} from "../../Controls/index.js";
+} from "../Controls/index.js";
 class SceneMethodes{
         size(w = "100%", h = "100%") {
             if(typeof(w)==="number")w=w+"px";

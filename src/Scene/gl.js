@@ -8,7 +8,7 @@ import { ZikoCamera } from "../Camera";
 import { 
     ZikoThreeObject,
  } from "../Mesh/ZikoThreeMesh";
-import { SceneMethodes } from "./Methodes/index.js";
+import { SceneMethodes } from "./Methodes.js";
 import { mixin, waitElm } from "../Utils";
 class ZikoThreeSceneGl extends ZikoUIElement{
     constructor(w,h){
@@ -24,10 +24,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
             last_intersected_uuid:null
         })
         mixin(this.__proto__,SceneMethodes)
-        //this.figure=Ziko.UI.html("figure");
         this.canvas=Ziko.UI.html("canvas").render(true,this.element)
-        //this.figure.append(this.canvas);
-        //this.element=this.figure.element;
         this.rendererGl=new THREE.WebGLRenderer({canvas:this.canvas.element});
         this.rendererTarget=this.rendererGl;
 		this.sceneGl=new THREE.Scene();

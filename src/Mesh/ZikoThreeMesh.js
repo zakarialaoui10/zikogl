@@ -20,10 +20,10 @@ class ZikoThreeObject{
         if(this.parent)this.parent.renderGl();
         return this;
     }
-    render(){
-        if(this.parent instanceof ZikoThreeSceneGl )this.parent.renderGl();
-        return this;
-    }
+    // renderParent(){
+    //     if(this.parent instanceof ZikoThreeSceneGl )this.parent.renderGl();
+    //     return this;
+    // }
     remove(){
 
     }
