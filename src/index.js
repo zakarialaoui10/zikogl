@@ -6,6 +6,11 @@ import { loadSVG } from "./Loaders/svg.js";
 //import { extrudeSvg } from "./Mesh/Geometries/index.js";
 import { 
     useAmbientLight,
+    useDirectionalLight,
+    useHemisphereLight,
+    usePointLight,
+    useRectAreaLight,
+    useSpotLight,
     useTransformControls
  } from "./Use";
 import { 
@@ -60,6 +65,11 @@ const ZikoGl={
     gridHelper3,
     polarHelper3,
     useAmbientLight,
+    useDirectionalLight,
+    useHemisphereLight,
+    usePointLight,
+    useRectAreaLight,
+    useSpotLight,
     useTransformControls,
     useDragControls
 }

@@ -21,7 +21,7 @@ class ZikoThreeGeometry{
 			maintain.call(this,render);
 			return this;
         }
-        pos(x,y,z,render){
+        pos(x,y,z,render=true){
 			this.element.position.set(x,y,z,render);
 			maintain.call(this,render);
 			return this;

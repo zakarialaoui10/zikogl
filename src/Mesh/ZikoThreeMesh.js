@@ -132,7 +132,7 @@ class ZikoThreeMesh extends ZikoThreeObject{
                 default : this.element.material[key]=materialAttr[key];
             }
         }
-        if(render)this.parent.render();
+        //if(render)this.parent.render();
         return this;
     }
 }
