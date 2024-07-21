@@ -6,7 +6,7 @@ import {
     MaterialType
 } from "./Methodes/index.js"
 import { mixin } from "../Utils/index.js";
-import { ZikoThreeSceneGl } from "../Scene/gl.js";
+//import { ZikoThreeSceneGl } from "../Scene/gl.js";
 class ZikoThreeObject{
     constructor(){
         this.parent=null; // Scene
@@ -15,8 +15,12 @@ class ZikoThreeObject{
         }
         mixin(this.__proto__,ZikoThreeGeometry);
     }
+    __init__(){
+
+    }
     _Maintain(){
-        this.element=new Mesh(this.geometry,this.material.currentMaterial);
+        //this.__init__()
+        //this.element=new Mesh(this.geometry,this.material.currentMaterial);
         if(this.parent)this.parent.renderGl();
         return this;
     }
@@ -24,8 +28,11 @@ class ZikoThreeObject{
     //     if(this.parent instanceof ZikoThreeSceneGl )this.parent.renderGl();
     //     return this;
     // }
-    remove(){
-
+    unrender(){
+        if(this.parent && this.parent.items.includes(this)){
+            this.parent.remove(this)
+        }
+        return this;
     }
     get px(){
         return this.element.position.x;
@@ -68,11 +75,16 @@ class ZikoThreeMesh extends ZikoThreeObject{
     constructor(Geometry,Material){
         super()
         this.cache={
-            type:"gl"
+            type:"gl",
+            materialAttributes:{}
         }
         this.element=new Mesh(Geometry,Material);
-        this.material=MaterialType(this.element,{});
-        mixin(this.__proto__,ZikoThreeMaterial)
+        this.material=MaterialType(this,{});
+        mixin(this.__proto__,ZikoThreeMaterial);
+    }
+    __init__(){
+        this.element=new Mesh(this.geometry,this.material.currentMaterial);
+        return this;
     }
     get isHovered(){
         //this.parent.renderGl()
@@ -90,7 +102,8 @@ class ZikoThreeMesh extends ZikoThreeObject{
             let value = materialAttr[key];
             switch(key){
                 case "visible":this.element.visible=materialAttr[key];break;
-                case "color" : this.element.material.color=new Color(value);break;
+                // case "color" : this.element.material.color=new Color(value);break;
+                case "color" : value = new Color(value);break;
                 case "texture" : {
                     if(["number","string"].includes(typeof value)) this.element.material.color=new Color(value);
                     if(value instanceof Color) this.element.material.color=value;
@@ -129,8 +142,10 @@ class ZikoThreeMesh extends ZikoThreeObject{
                     }
 
                 } ; break;
-                default : this.element.material[key]=materialAttr[key];
+               // default : this.element.material[key]=materialAttr[key];
             }
+            this.element.material[key]=value;
+            Object.assign(this.cache.materialAttributes,{[key]:value})
         }
         //if(render)this.parent.render();
         return this;

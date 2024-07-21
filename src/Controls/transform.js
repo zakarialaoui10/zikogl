@@ -8,6 +8,7 @@ class ZikoThreeTransformControls{
         this.isPaused=false;
         this.mode="translate";
         this.onChange()
+        this.t=this.#TARGET
     }
     add(){
         this.#TARGET.sceneGl.add(this.control)
