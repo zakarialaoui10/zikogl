@@ -15,82 +15,78 @@ class ZikoTHREEMaterialType{
     #LINE_DASHED_MATERIAL=null;
 
     #POINTS_MATERIAL
-    constructor(parent){
-        this.parent=parent;
-        // this.parent.element=parent;
-        this.parent.cache.materialAttributes={
-            // color:0xffff00
-        }
+    constructor(parentObject){
+        this.parentObject=parentObject;
     }
     get currentMaterial(){
-        return this.parent.element.material;
+        return this.parentObject.element.material;
     }
     useMeshBasicMaterial(){
-        console.log(this.parent.cache.materialAttributes)
-        if(!this.#MESH_BASIC_MATERIAL)this.#MESH_BASIC_MATERIAL=new THREE.MeshBasicMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#MESH_BASIC_MATERIAL;
+        console.log(this.parentObject.cache.materialAttributes)
+        if(!this.#MESH_BASIC_MATERIAL)this.#MESH_BASIC_MATERIAL=new THREE.MeshBasicMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#MESH_BASIC_MATERIAL;
         return this;
     }
     useMeshPhongMaterial(){
-        if(!this.#MESH_PHONG_MATERIAL)this.#MESH_PHONG_MATERIAL=new THREE.MeshPhongMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#MESH_PHONG_MATERIAL;
+        if(!this.#MESH_PHONG_MATERIAL)this.#MESH_PHONG_MATERIAL=new THREE.MeshPhongMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#MESH_PHONG_MATERIAL;
         return this;
     }
     useMeshDepthMaterial(){
-        if(!this.#MESH_DEPTH_MATERIAL)this.#MESH_DEPTH_MATERIAL=new THREE.MeshDepthMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#MESH_DEPTH_MATERIAL;
+        if(!this.#MESH_DEPTH_MATERIAL)this.#MESH_DEPTH_MATERIAL=new THREE.MeshDepthMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#MESH_DEPTH_MATERIAL;
         return this;
     }
     useMeshLambertMaterial(){
-        if(!this.#MESH_LAMBERT_MATERIAL)this.#MESH_LAMBERT_MATERIAL=new THREE.MeshLambertMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#MESH_LAMBERT_MATERIAL;
+        if(!this.#MESH_LAMBERT_MATERIAL)this.#MESH_LAMBERT_MATERIAL=new THREE.MeshLambertMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#MESH_LAMBERT_MATERIAL;
         return this;
     }
     useMeshPhysicalMaterial(){
-        if(!this.#MESH_PHYSICAL_MATERIAL)this.#MESH_PHYSICAL_MATERIAL=new THREE.MeshPhysicalMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#MESH_PHYSICAL_MATERIAL;
+        if(!this.#MESH_PHYSICAL_MATERIAL)this.#MESH_PHYSICAL_MATERIAL=new THREE.MeshPhysicalMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#MESH_PHYSICAL_MATERIAL;
         return this;
     }
     useMeshNormalMaterial(){
-        if(!this.#MESH_NORMAL_MATERIAL)this.#MESH_NORMAL_MATERIAL=new THREE.MeshNormalMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#MESH_NORMAL_MATERIAL;
+        if(!this.#MESH_NORMAL_MATERIAL)this.#MESH_NORMAL_MATERIAL=new THREE.MeshNormalMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#MESH_NORMAL_MATERIAL;
         return this;
     }
     useMeshStandardMaterial(){
-        if(!this.#MESH_STANDARD_MATERIAL)this.#MESH_STANDARD_MATERIAL=new THREE.MeshStandardMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#MESH_STANDARD_MATERIAL;
+        if(!this.#MESH_STANDARD_MATERIAL)this.#MESH_STANDARD_MATERIAL=new THREE.MeshStandardMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#MESH_STANDARD_MATERIAL;
         return this;
     }
     useMeshDistanceMaterial(){
-        if(!this.#MESH_DISTANCE_MATERIAL)this.#MESH_DISTANCE_MATERIAL=new THREE.MeshDistanceMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#MESH_DISTANCE_MATERIAL;
+        if(!this.#MESH_DISTANCE_MATERIAL)this.#MESH_DISTANCE_MATERIAL=new THREE.MeshDistanceMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#MESH_DISTANCE_MATERIAL;
         return this;
     }
     useMeshMatcapMaterial(){
-        if(!this.#MESH_MATCAP_MATERIAL)this.#MESH_MATCAP_MATERIAL=new THREE.MeshMatcapMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#MESH_MATCAP_MATERIAL;
+        if(!this.#MESH_MATCAP_MATERIAL)this.#MESH_MATCAP_MATERIAL=new THREE.MeshMatcapMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#MESH_MATCAP_MATERIAL;
         return this;
     }
     useMeshToonMaterial(){
-        if(!this.#MESH_TOON_MATERIAL)this.#MESH_TOON_MATERIAL=new THREE.MeshToonMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#MESH_TOON_MATERIAL;
+        if(!this.#MESH_TOON_MATERIAL)this.#MESH_TOON_MATERIAL=new THREE.MeshToonMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#MESH_TOON_MATERIAL;
         return this;
     }
     useLineBasicMaterial(){
-        if(!this.#LINE_BASIC_MATERIAL)this.#LINE_BASIC_MATERIAL=new THREE.LineBasicMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#LINE_BASIC_MATERIAL;
+        if(!this.#LINE_BASIC_MATERIAL)this.#LINE_BASIC_MATERIAL=new THREE.LineBasicMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#LINE_BASIC_MATERIAL;
         return this;
     }
     useLineDashedMaterial(){
-        if(!this.#LINE_DASHED_MATERIAL)this.#LINE_DASHED_MATERIAL=new THREE.LineDashedMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#LINE_DASHED_MATERIAL;
+        if(!this.#LINE_DASHED_MATERIAL)this.#LINE_DASHED_MATERIAL=new THREE.LineDashedMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#LINE_DASHED_MATERIAL;
         return this;
     }
     usePointsMaterial(){
-        if(!this.#POINTS_MATERIAL)this.#POINTS_MATERIAL=new THREE.PointsMaterial(this.parent.cache.materialAttributes);
-        this.parent.element.material=this.#POINTS_MATERIAL;
+        if(!this.#POINTS_MATERIAL)this.#POINTS_MATERIAL=new THREE.PointsMaterial(this.parentObject.cache.materialAttributes);
+        this.parentObject.element.material=this.#POINTS_MATERIAL;
         return this;      
     }
 }
-const MaterialType=(parent,attributes={})=>new ZikoTHREEMaterialType(parent,attributes);
+const MaterialType=(parentObject,attributes={})=>new ZikoTHREEMaterialType(parentObject,attributes);
 export {MaterialType}

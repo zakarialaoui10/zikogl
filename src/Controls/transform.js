@@ -41,6 +41,7 @@ class ZikoThreeTransformControls{
     onChange(handler){
         this.control.addEventListener("change",()=>{
             if(!this.isPaused){
+                if(this.#TARGET.cache.type==="css")this.#TARGET.renderCss()
                 this.#TARGET.renderGl()
                 if(handler)handler()
             }
