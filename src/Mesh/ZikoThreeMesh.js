@@ -3,10 +3,8 @@ import { ZikoUICanvas, ZikoUIElement, ZikoUIImage, ZikoUISvg, ZikoUIVideo } from
 import {
     ZikoThreeGeometry,
     ZikoThreeMaterial,
-    MaterialType
 } from "./Methodes/index.js"
 import { mixin } from "../Utils/index.js";
-//import { ZikoThreeSceneGl } from "../Scene/gl.js";
 class ZikoThreeObject{
     constructor(){
         this.parent=null; // Scene
@@ -21,7 +19,7 @@ class ZikoThreeObject{
     _Maintain(){
         //this.__init__()
         //this.element=new Mesh(this.geometry,this.material.currentMaterial);
-        if(this.parent)this.parent.renderGl();
+        //if(this.parent)this.parent.renderGl();
         return this;
     }
     // renderParent(){
@@ -79,11 +77,12 @@ class ZikoThreeMesh extends ZikoThreeObject{
             materialAttributes:{}
         }
         this.element=new Mesh(Geometry,Material);
-        this.material=MaterialType(this,{});
+        // this.material=__Material__(this,{});
         mixin(this.__proto__,ZikoThreeMaterial);
     }
     __init__(){
-        this.element=new Mesh(this.geometry,this.material.currentMaterial);
+        // this.element=new Mesh(this.geometry,this.material.currentMaterial);
+        this.element=new Mesh(this.geometry);
         return this;
     }
     get isHovered(){
@@ -97,59 +96,7 @@ class ZikoThreeMesh extends ZikoThreeObject{
     get Material(){
         return this.element.material;
     }
-    style(materialAttr,render=true){
-        for(let key in materialAttr){
-            let value = materialAttr[key];
-            switch(key){
-                case "visible":this.element.visible=materialAttr[key];break;
-                // case "color" : this.element.material.color=new Color(value);break;
-                case "color" : value = new Color(value);break;
-                case "texture" : {
-                    if(["number","string"].includes(typeof value)) this.element.material.color=new Color(value);
-                    if(value instanceof Color) this.element.material.color=value;
-                    if(value instanceof Texture){
-                        if(value instanceof CanvasTexture){
-                            
-                        }
-                    }
-                    if(value instanceof ZikoUIElement){
-                        if(value instanceof ZikoUIImage){
-
-                        }
-                        if(value instanceof ZikoUISvg){
-
-                        }
-                        if(value instanceof ZikoUICanvas){
-
-                        }
-                        if(value instanceof ZikoUIVideo){
-
-                        }
-                    }
-                    if(value instanceof HTMLElement){
-                        if(value instanceof HTMLImageElement){
-
-                        }
-                        if(value instanceof HTMLCanvasElement){
-
-                        }
-                        if(value instanceof HTMLVideoElement){
-
-                        }
-                    }
-                    if(value instanceof SVGSVGElement){
-
-                    }
-
-                } ; break;
-               // default : this.element.material[key]=materialAttr[key];
-            }
-            this.element.material[key]=value;
-            Object.assign(this.cache.materialAttributes,{[key]:value})
-        }
-        //if(render)this.parent.render();
-        return this;
-    }
+    
 }
 export {
     ZikoThreeObject,

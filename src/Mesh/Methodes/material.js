@@ -1,71 +1,114 @@
+import * as THREE from "three"
 import {
     ZikoUIImage,
     ZikoUICanvas
 } from "ziko"
 class ZikoThreeMaterial{
-    useBasic(){
-        this.material.useMeshBasicMaterial();
-        this._Maintain();
+    // constructor(){
+    //    // this.material=null
+    // }
+    useMeshBasicMaterial(){
+        this.element.material=new THREE.MeshBasicMaterial(this.cache.materialAttributes);
         return this;
     }
-    usePhong(){
-        this.material.useMeshPhongMaterial();
-        this._Maintain();
+    useMeshPhongMaterial(){
+        this.element.material=new THREE.MeshPhongMaterial(this.cache.materialAttributes);
         return this;
     }
-    useDepth(){
-        this.material.useMeshDepthMaterial();
-        this._Maintain();
+    useMeshDepthMaterial(){
+        this.element.material=new THREE.MeshDepthMaterial(this.cache.materialAttributes);
         return this;
     }
-    useLambert(){
-        this.material.useMeshLambertMaterial();
-        this._Maintain();
+    useMeshLambertMaterial(){
+        this.element.material=new THREE.MeshLambertMaterial(this.cache.materialAttributes);
         return this;
     }
-    usePhysical(){
-        this.material.useMeshPhysicalMaterial();
-        this._Maintain();
+    useMeshPhysicalMaterial(){
+        this.element.material=new THREE.MeshPhysicalMaterial(this.cache.materialAttributes);
         return this;
     }
-    useNormal(){
-        this.material.useMeshNormalMaterial();
-        this._Maintain();
+    useMeshNormalMaterial(){
+        this.element.material=new THREE.MeshNormalMaterial(this.cache.materialAttributes);
         return this;
     }
-    useStandard(){
-        this.material.useMeshStandardMaterial();
-        this._Maintain();
+    useMeshStandardMaterial(){
+        this.element.material=new THREE.MeshStandardMaterial(this.cache.materialAttributes);
         return this;
     }
-    useDistance(){
-        this.material.useMeshDistanceMaterial();
-        this._Maintain();
+    useMeshDistanceMaterial(){
+        this.element.material=new THREE.MeshDistanceMaterial(this.cache.materialAttributes);
         return this;
     }
-    useMatcap(){
-        this.material.useMeshMatcapMaterial();
-        this._Maintain();
+    useMeshMatcapMaterial(){
+        this.element.material=new THREE.MeshMatcapMaterial(this.cache.materialAttributes);
         return this;
     }
-    useToon(){
-        this.material.useMeshToonMaterial();
-        this._Maintain();
+    useMeshToonMaterial(){
+        this.element.material=new THREE.MeshToonMaterial(this.cache.materialAttributes);
         return this;
     }
-    useLineBasic(){
-        this.material.useLineBasicMaterial();
-        this._Maintain();
+    useLineBasicMaterial(){
+        this.element.material=new THREE.LineBasicMaterial(this.cache.materialAttributes);
         return this;
     }
-    useLineDashed(){
-        this.material.useLineDashedMaterial();
-        this._Maintain();
+    useLineDashedMaterial(){
+        this.element.material=new THREE.LineDashedMaterial(this.cache.materialAttributes);
         return this;
     }
-    usePoints(){
-        this.material.usePointsMaterial();
-        this._Maintain();
+    usePointsMaterial(){
+        this.element.material=new THREE.PointsMaterial(this.cache.materialAttributes);
+        return this;      
+    }
+    style(materialAttr,render=true){
+        for(let key in materialAttr){
+            let value = materialAttr[key];
+            switch(key){
+                case "visible":this.element.visible=materialAttr[key];break;
+                case "color" : value = new Color(value);break;
+                case "texture" : {
+                    if(["number","string"].includes(typeof value)) this.element.material.color=new Color(value);
+                    if(value instanceof Color) this.element.material.color=value;
+                    if(value instanceof Texture){
+                        if(value instanceof CanvasTexture){
+                            
+                        }
+                    }
+                    if(value instanceof ZikoUIElement){
+                        if(value instanceof ZikoUIImage){
+
+                        }
+                        if(value instanceof ZikoUISvg){
+
+                        }
+                        if(value instanceof ZikoUICanvas){
+
+                        }
+                        if(value instanceof ZikoUIVideo){
+
+                        }
+                    }
+                    if(value instanceof HTMLElement){
+                        if(value instanceof HTMLImageElement){
+
+                        }
+                        if(value instanceof HTMLCanvasElement){
+
+                        }
+                        if(value instanceof HTMLVideoElement){
+
+                        }
+                    }
+                    if(value instanceof SVGSVGElement){
+
+                    }
+
+                } ; break;
+               // default : this.element.material[key]=materialAttr[key];
+            }
+            this.element.material[key]=value;
+            Object.assign(this.cache.materialAttributes,{[key]:value})
+        }
+        //if(render)this.parent.render();
         return this;
     }
     color(color,render=true){
