@@ -38,7 +38,7 @@ import{
     svg3,
     extrude3,
     ui3
-} from "./Mesh/index.js";
+} from "./Object3D/index.js";
 import { useDragControls } from "./Controls/drag.js";
 const ZikoGl={
     THREE,
@@ -105,6 +105,6 @@ if ( globalThis.__ZikoGl__ ) {
         };
 	}
 export * from "./Scene";
-export * from "./Mesh";
+export * from "./Object3D";
 export * from "./Use";
 export default ZikoGl

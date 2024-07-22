@@ -1,4 +1,4 @@
-import { ZikoThreeObject } from "../Mesh/ZikoThreeMesh";
+import { ZikoThreeObject } from "../Object3D/ZikoThreeMesh";
 import { 
     AmbientLight, 
     DirectionalLight, 

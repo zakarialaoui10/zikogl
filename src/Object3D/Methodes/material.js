@@ -1,12 +1,7 @@
 import * as THREE from "three"
-import {
-    ZikoUIImage,
-    ZikoUICanvas
-} from "ziko"
+import { Texture, Color, Mesh, CanvasTexture } from "three";
+import { ZikoUICanvas, ZikoUIElement, ZikoUIImage, ZikoUISvg, ZikoUIVideo } from "ziko";
 class ZikoThreeMaterial{
-    // constructor(){
-    //    // this.material=null
-    // }
     useMeshBasicMaterial(){
         this.element.material=new THREE.MeshBasicMaterial(this.cache.materialAttributes);
         return this;
@@ -111,42 +106,53 @@ class ZikoThreeMaterial{
         //if(render)this.parent.render();
         return this;
     }
+    get st(){
+        let that = this
+        return{
+            color:function(color){
+                return that
+            },
+            t:()=>{
+                return this.st;
+            }
+        }
+    }
     color(color,render=true){
-        this.element.material.color=new THREE.Color(color);
-        if(render && this.parent)this.parent.renderGl();
+        // this.element.material.color=new THREE.Color(color);
+        // if(render && this.parent)this.parent.renderGl();
         return this;
     }
     side(){
 
     }
     wireframe(bool,render=true){
-        this.element.material.wireframe=bool;
-        if(render && this.parent)this.parent.renderGl();
+        // this.element.material.wireframe=bool;
+        // if(render && this.parent)this.parent.renderGl();
         return this;
     }
     opacity(n=1,render=true){
-        this.transparent(true,false);
-        this.element.material.opacity=n;
-        if(render && this.parent)this.parent.renderGl()
-        return this;
+        // this.transparent(true,false);
+        // this.element.material.opacity=n;
+        // if(render && this.parent)this.parent.renderGl()
+        // return this;
     }
     transparent(bool,render=true){
-        this.element.material.transparent=bool;
-        this.parent.renderGl();          
+        // this.element.material.transparent=bool;
+        // this.parent.renderGl();          
     }
     texture(texture,render=true){
-        if(texture instanceof THREE.Texture){
-            this.element.material.map=texture;
-        }
-        if(texture instanceof ZikoUIImage){
-            this.element.material.map=image2texture(texture);
-        }
-        if(texture instanceof ZikoUICanvas){
-            this.element.material.map=canvas2texture(texture);
-        }
-        this.element.material.needsUpdate=true;
-        if(render && this.parent)this.parent.renderGl()
-        return this;
+        // if(texture instanceof THREE.Texture){
+        //     this.element.material.map=texture;
+        // }
+        // if(texture instanceof ZikoUIImage){
+        //     this.element.material.map=image2texture(texture);
+        // }
+        // if(texture instanceof ZikoUICanvas){
+        //     this.element.material.map=canvas2texture(texture);
+        // }
+        // this.element.material.needsUpdate=true;
+        // if(render && this.parent)this.parent.renderGl()
+        // return this;
     }
 }
 export{

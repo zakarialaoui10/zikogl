@@ -7,7 +7,7 @@ import Ziko  from "ziko";
 import { ZikoCamera } from "../Camera";
 import { 
     ZikoThreeObject,
- } from "../Mesh/ZikoThreeMesh";
+ } from "../Object3D/ZikoThreeMesh";
 //import { SceneMethodes } from "./Methodes.js";
 import { mixin, waitElm } from "../Utils";
 import { ZikoUIImage } from "ziko";
@@ -30,7 +30,6 @@ class ZikoThreeSceneGl extends ZikoUIElement{
 		    raycaster:new THREE.Raycaster(),
             last_intersected_uuid:null
         })
-        // mixin(this.__proto__,SceneMethodes)
         this.canvas=Ziko.UI.html("canvas").render(true,this.element)
         this.rendererGl=new THREE.WebGLRenderer({canvas:this.canvas.element});
         this.rendererTarget=this.rendererGl;
@@ -38,7 +37,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         this.camera=ZikoCamera(w,h,0.1,1000);
         this.camera.currentCamera.position.z=10;
         this.camera.parent=this;
-        this.sceneGl.background=new THREE.Color("#ff0000");
+        this.sceneGl.background=new THREE.Color("#3333ee");
         this.renderGl()
         this.render();
         this.size(w,h);

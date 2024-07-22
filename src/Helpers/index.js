@@ -1,4 +1,4 @@
-import { ZikoThreeGeometry } from "../Mesh/Methodes/index.js"
+import { ZikoThreeGeometry } from "../Object3D/Methodes/index.js"
 import { mixin } from "../Utils/index.js";
 class ZikoThreeHelper {
     constructor(){
