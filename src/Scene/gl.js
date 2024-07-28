@@ -6,8 +6,8 @@ import {
 import Ziko  from "ziko";
 import { ZikoCamera } from "../Camera";
 import { 
-    ZikoThreeObject,
- } from "../Object3D/ZikoThreeMesh";
+    ZikoThreeObject3D,
+ } from "../Object3D/ZikoThreeObject3D.js";
 //import { SceneMethodes } from "./Methodes.js";
 import { mixin, waitElm } from "../Utils";
 import { ZikoUIImage } from "ziko";
@@ -74,7 +74,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
 	}
     add(...obj){
 		obj.map((n,i)=>{
-			if(n instanceof ZikoThreeObject){
+			if(n instanceof ZikoThreeObject3D){
 				this.sceneGl.add(obj[i].element);
 				this.items.push(obj[i]);
 				n.parent=this;

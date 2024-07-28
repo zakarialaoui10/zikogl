@@ -5,7 +5,7 @@ import {
     ZikoThreeMaterial,
 } from "./Methodes/index.js"
 import { mixin } from "../Utils/index.js";
-class ZikoThreeObject{
+class ZikoThreeObject3D{
     constructor(){
         this.parent=null;
         this.cache={
@@ -56,7 +56,7 @@ class ZikoThreeObject{
         }
     }
 }
-class ZikoThreeMesh extends ZikoThreeObject{
+class ZikoThreeMesh extends ZikoThreeObject3D{
     constructor(Geometry,Material){
         super()
         this.cache={
@@ -80,6 +80,6 @@ class ZikoThreeMesh extends ZikoThreeObject{
     
 }
 export {
-    ZikoThreeObject,
+    ZikoThreeObject3D,
     ZikoThreeMesh
 }

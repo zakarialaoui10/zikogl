@@ -1,10 +1,10 @@
 
 import * as THREE from "three"
 import { 
-	ZikoThreeObject,
+	ZikoThreeObject3D,
 	ZikoThreeMesh
- } from "../ZikoThreeMesh";
-class ZikoThreeGroupe extends ZikoThreeObject{
+ } from "../ZikoThreeObject3D.js";
+class ZikoThreeGroupe extends ZikoThreeObject3D{
 	constructor(){
 		super();
 		this.element=new THREE.Group();

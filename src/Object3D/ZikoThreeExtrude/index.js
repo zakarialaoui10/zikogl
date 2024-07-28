@@ -1,5 +1,5 @@
-import { ZikoThreeMesh } from "../ZikoThreeMesh";
-import { ZikoThreeGroupe } from "./groupe";
+import { ZikoThreeMesh } from "../ZikoThreeObject3D";
+import { ZikoThreeGroupe } from "../ZikoThreeGroupe";
 class ZikoThreeExtrude extends ZikoThreeMesh{
     constructor(shape,depth=5,bevelEnabled=false){
         super()

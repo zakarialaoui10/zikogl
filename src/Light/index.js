@@ -1,4 +1,4 @@
-import { ZikoThreeObject } from "../Object3D/ZikoThreeMesh";
+import { ZikoThreeObject3D } from "../Object3D/ZikoThreeObject3D";
 import { 
     AmbientLight, 
     DirectionalLight, 
@@ -8,7 +8,7 @@ import {
     SpotLight 
 } from "three/src/Three.js";
 
-class ZikoThreeLight extends ZikoThreeObject {
+class ZikoThreeLight extends ZikoThreeObject3D {
     constructor() {
         super();
     }

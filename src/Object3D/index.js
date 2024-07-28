@@ -13,14 +13,14 @@ export{
     dodecahedron3,
     icosahedron3,
     octahedron3
-} from "./Meshes/primitives.js";
+} from "./ZikoThreeMesh/primitives.js";
 export{
     groupe3,
-} from "./Meshes/groupe.js"
+} from "./ZikoThreeGroupe/index.js"
 export { 
     svg3,
     extrude3
- } from "./Meshes/extrude.js";
+ } from "./ZikoThreeExtrude/index.js";
 export {
     ui3
-} from "./Meshes/css.js";
+} from "./ZikoThreeCss/index.js";
