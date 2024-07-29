@@ -7,7 +7,7 @@ class __ZikoThreeMLP__ extends ZikoThreeObject3D{
             type:"gl",
             materialAttributes:{}
         }
-        this.element=new Mesh(Geometry,Material);
+        // this.element=new Mesh(Geometry,Material);
     }
     get isHovered(){
         //this.parent.renderGl()

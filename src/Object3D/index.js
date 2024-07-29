@@ -1,7 +1,6 @@
 export{
     cube3,
     plan3,
-    line3,
     cuboid3,
     cylindre3,
     sphere3,
@@ -13,7 +12,10 @@ export{
     dodecahedron3,
     icosahedron3,
     octahedron3
-} from "./ZikoThreePrimitives/primitives.js";
+} from "./ZikoThreePrimitives/ZikoThreeMesh.js";
+export{
+    line3
+} from "./ZikoThreePrimitives/ZikoThreeLine.js"
 export{
     groupe3,
 } from "./ZikoThreeGroupe/index.js"

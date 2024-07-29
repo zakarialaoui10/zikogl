@@ -1,7 +1,10 @@
 import { __ZikoThreeMLP__ } from "./__ZikoThreeMLP__";
 class ZikoThreeLine extends __ZikoThreeMLP__{
-    constructor(Geometry,Material){
-        super(Geometry,Material)
+    constructor(X,Y){
+        super();
+        var points = [X,Y].map(pts=>new THREE.Vector3(...pts));
+        var geometry = new THREE.BufferGeometry().setFromPoints(points);
+        this.element=new THREE.Line(geometry);
     }
     useLineBasicMaterial(){
         this.element.material=new THREE.LineBasicMaterial(this.cache.materialAttributes);
@@ -12,6 +15,8 @@ class ZikoThreeLine extends __ZikoThreeMLP__{
         return this;
     }
 }
+const line3=(X,Y,style)=>new ZikoThreeLine(X,Y).style(style)
 export{
-    ZikoThreeLine
+    ZikoThreeLine,
+    line3
 }
