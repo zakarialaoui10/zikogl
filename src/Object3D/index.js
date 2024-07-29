@@ -1,6 +1,6 @@
 export{
     cube3,
-    plan3,
+    plane3,
     cuboid3,
     cylindre3,
     sphere3,

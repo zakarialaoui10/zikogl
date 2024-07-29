@@ -21,7 +21,7 @@ import {
  } from "./Helpers/index.js";
 import{
     cube3,
-    plan3,
+    plane3,
     line3,
     cuboid3,
     cylindre3,
@@ -48,7 +48,7 @@ const ZikoGl={
     SceneGl,
     SceneCss,
     cube3,
-    plan3,
+    plane3,
     line3,
     cuboid3,
     cylindre3,

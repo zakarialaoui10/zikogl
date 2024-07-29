@@ -1,4 +1,3 @@
-import { mixin } from "../Utils/index.js";
 class ZikoThreeObject3D{
     constructor(){
         this.parent=null;
