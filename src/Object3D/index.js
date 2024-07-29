@@ -13,7 +13,7 @@ export{
     dodecahedron3,
     icosahedron3,
     octahedron3
-} from "./ZikoThreeMesh/primitives.js";
+} from "./ZikoThreePrimitives/primitives.js";
 export{
     groupe3,
 } from "./ZikoThreeGroupe/index.js"

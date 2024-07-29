@@ -2,8 +2,8 @@
 import * as THREE from "three"
 import { 
 	ZikoThreeObject3D,
-	ZikoThreeMesh
  } from "../ZikoThreeObject3D.js";
+import { ZikoThreeMesh } from "../ZikoThreePrimitives/ZikoThreeMesh.js";
 class ZikoThreeGroupe extends ZikoThreeObject3D{
 	constructor(){
 		super();

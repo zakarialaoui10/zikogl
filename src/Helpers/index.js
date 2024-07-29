@@ -1,10 +1,10 @@
-import { ZikoThreeGeometry } from "../Object3D/Methodes/index.js"
-import { mixin } from "../Utils/index.js";
+// should extends from objec3d or MLP
+
 class ZikoThreeHelper {
     constructor(){
         this.element=null;
         Object.assign(this, GeometryComposer.call(this));  
-        mixin(this.__proto__,ZikoThreeGeometry)    
+        // mixin(this.__proto__,ZikoThreeGeometry)    
     }
 }
 class ZikoThreeGridHelper extends ZikoThreeHelper{
