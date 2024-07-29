@@ -69,7 +69,7 @@ class __ZikoThreeMLP__ extends ZikoThreeObject3D{
             this.element.material[key]=value;
             Object.assign(this.cache.materialAttributes,{[key]:value})
         }
-        // if(render)this.parent.renderGl(); // IF parent type is Gl
+        if(render && this.parent)this.parent.renderGl(); // IF parent type is Gl
         return this;
     }  
     get st(){

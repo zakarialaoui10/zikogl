@@ -1,15 +1,13 @@
 import * as THREE from "three";
 import {
     ZikoUIElement,
-    html
 } from "ziko"
 import Ziko  from "ziko";
 import { ZikoCamera } from "../Camera";
 import { 
     ZikoThreeObject3D,
  } from "../Object3D/ZikoThreeObject3D.js";
-//import { SceneMethodes } from "./Methodes.js";
-import { mixin, waitElm } from "../Utils";
+import {  waitElm } from "../Utils";
 import { ZikoUIImage } from "ziko";
 import { image2texture } from "../Loaders/image.js";
 import { 
@@ -26,9 +24,16 @@ class ZikoThreeSceneGl extends ZikoUIElement{
                 orbit:null,
                 transform:null
             },
-            pointer:new THREE.Vector2(),
-		    raycaster:new THREE.Raycaster(),
-            last_intersected_uuid:null
+            watch:{
+                intersection:{
+                    enabled:true,
+                    pointer:new THREE.Vector2(),
+                    raycaster:new THREE.Raycaster(),
+                    INTERSECTED:null,
+                    onStartIntersectionCallback:()=>{},
+                    onEndIntersectionCallback:()=>{}
+                }
+            }
         })
         this.canvas=Ziko.UI.html("canvas").render(true,this.element)
         this.rendererGl=new THREE.WebGLRenderer({canvas:this.canvas.element});
@@ -68,10 +73,29 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         return this;
     }
     renderGl(){
-        //this.forEachIntersectedItem()
+        if(this.cache.watch.intersection.enabled){
+            this.cache.watch.intersection.raycaster.setFromCamera( this.cache.watch.intersection.pointer, this.camera.currentCamera );
+            const intersects = this.cache.watch.intersection.raycaster.intersectObjects( this.sceneGl.children, false );
+            if ( intersects.length > 0 ) {
+                let current = gl.items.find(n=>n.id===intersects[ 0 ].object.id)
+                if ( this.cache.watch.intersection.INTERSECTED != current ) {
+                    this.cache.watch.intersection.INTERSECTED =  current;
+                    this.cache.watch.intersection.onStartIntersectionCallback.call(this);
+                }
+        } else {
+            // if(this.cache.watch.intersection.INTERSECTED)console.log("END")
+                // this.cache.watch.intersection.onEndIntersectionCallback.call(this);
+            this.cache.watch.intersection.INTERSECTED = null;
+        }
+        }
 		this.rendererGl.render(this.sceneGl,this.camera.currentCamera);
 		return this;
 	}
+    watchObjectIntersection(onStartIntersectionCallback=()=>{},onEndIntersectionCallback=()=>{}){
+        this.cache.watch.intersection.onStartIntersectionCallback=()=>onStartIntersectionCallback(this.cache.watch.intersection.INTERSECTED);
+        this.cache.watch.intersection.onEndIntersectionCallback=()=>onEndIntersectionCallback(this.cache.watch.intersection.INTERSECTED);
+        return this;
+    }
     add(...obj){
 		obj.map((n,i)=>{
 			if(n instanceof ZikoThreeObject3D){
@@ -95,26 +119,6 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         }
 		return this;
     }
-    // forEachIntersectedItem(if_callback=()=>{},else_callback=()=>{}){
-    //     this.cache.raycaster.setFromCamera( this.cache.pointer, this.camera.currentCamera );
-    //     const intersects = this.cache.raycaster.intersectObjects( this.sceneGl.children ).filter(n=>{
-    //         return !(
-    //             (n.object.type.includes("Controls"))||
-    //             (n.object.tag==="helper")||
-    //             ["X","Y","Z","XYZ","XYZE","E"].includes(n.object.name)
-    //         )
-    //     })
-    //     const uuids=intersects.map(n=>n.object.uuid);
-    //     const intersectred_items=this.items.filter(n=>uuids.includes(n.element.uuid))
-    //     const not_intersectred_items=this.items.filter(n=>!uuids.includes(n.element.uuid))
-    //         for ( let i = 0; i < intersectred_items.length; i ++ ) {
-    //             console.log(intersectred_items[i])
-    //             intersectred_items[i].color("#ff00ff")    
-    //         }
-    //     return this;
-
-    //     // should be used  with throttle or debounce
-    // }
     size(w = "100%", h = "100%") {
         if(typeof(w)==="number")w=w+"px";
         if(typeof(h)==="number")h=h+"px";
