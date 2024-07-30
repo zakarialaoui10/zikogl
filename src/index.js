@@ -2,7 +2,6 @@ import * as THREE from "three"
 import { SceneGl } from "./Scene/gl.js";
 import { SceneCss } from "./Scene/css.js";
 import { loadSVG } from "./Loaders/svg.js";
-//import { extrudeSvg } from "./Mesh/Geometries/index.js";
 import { 
     useAmbientLight,
     useDirectionalLight,
@@ -11,6 +10,13 @@ import {
     useRectAreaLight,
     useSpotLight,
     useTransformControls,
+    useAxesHelper,
+    useGridHelper,
+    usePolarHelper,
+    usePlaneHelper,
+    useBoxHelper,
+    useBoxVectorHelper,
+    useArrowHelper,
     useFog,
     useFogExp2,
     useCoordinates,
@@ -37,12 +43,6 @@ import{
     svg3,
     extrude3,
     ui3,
-    axesHelper3,
-    gridHelper3,
-    polarHelper3,
-    planeHelper3,
-    boxHelper3,
-    boxVectorHelper3,
 } from "./Object3D/index.js";
 import { useDragControls } from "./Controls/drag.js";
 const ZikoGl={
@@ -68,12 +68,13 @@ const ZikoGl={
     groupe3,
     svg3,
     extrude3,
-    axesHelper3,
-    gridHelper3,
-    polarHelper3,
-    planeHelper3,
-    boxHelper3,
-    boxVectorHelper3,
+    useAxesHelper,
+    useGridHelper,
+    usePolarHelper,
+    usePlaneHelper,
+    useBoxHelper,
+    useBoxVectorHelper,
+    useArrowHelper,
     useTexture,
     useAmbientLight,
     useDirectionalLight,

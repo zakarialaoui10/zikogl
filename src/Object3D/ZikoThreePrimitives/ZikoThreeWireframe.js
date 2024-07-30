@@ -12,8 +12,10 @@ class ZikoThreeWireframe extends ZikoThreeObject3D{
             const Geometry = new WireframeGeometry(ZikoMesh.element.geometry);
             const Material = new LineBasicMaterial(ZikoMesh.cache.materialAttributes);
             this.element=new LineSegments(Geometry, Material);
-        }
-        
+        }   
+    }
+    get type(){
+        return "wireframe"
     }
 }
 const useWireframe=ZikoMesh=>new ZikoThreeWireframe(ZikoMesh);

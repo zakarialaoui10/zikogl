@@ -12,6 +12,9 @@ class ZikoThreeLine extends __ZikoThreeMLP__{
         let geometry = BufferGeometry().setFromPoints(points);
         this.element = Line(geometry);
     }
+    get type(){
+        return "line"
+    }
     useLineBasicMaterial(){
         this.element.material=new LineBasicMaterial(this.cache.materialAttributes);
         return this;

@@ -13,7 +13,9 @@ class ZikoThreeEdges extends ZikoThreeObject3D{
             const Material = new LineBasicMaterial(ZikoMesh.cache.materialAttributes);
             this.element=new LineSegments(Geometry, Material);
         }
-        
+    }
+    get type(){
+        return "edges"
     }
 }
 const useEdges=ZikoMesh=>new ZikoThreeEdges(ZikoMesh);
