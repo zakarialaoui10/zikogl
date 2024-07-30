@@ -1,11 +1,11 @@
-import { FlyControls } from 'three/addons/controls/FlyControls.js';
+import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 import { Vector3, Quaternion } from 'three/src/Three.js';
 
-class ZikoThreeFlyControls {
+class ZikoThreeTrackballControls {
     #TARGET
     constructor(target) {
         this.#TARGET = target;
-        this.control = new FlyControls(target.camera.currentCamera, target.rendererTarget.domElement);
+        this.control = new TrackballControls(target.camera.currentCamera, target.rendererTarget.domElement);
         this.isPaused = false;
         this.__cache__ = {
             saved_state: {
@@ -83,14 +83,14 @@ class ZikoThreeFlyControls {
     }
 
     init() {
-        this.control = new FlyControls(this.#TARGET.camera.currentCamera, this.#TARGET.rendererTarget.domElement);
+        this.control = new TrackballControls(this.#TARGET.camera.currentCamera, this.#TARGET.rendererTarget.domElement);
         this.restore();
         return this;
     }
 
     clear() {
         this.dispose();
-        this.#TARGET.cache.controls.fly = null;
+        this.#TARGET.cache.controls.trackball = null;
         return null;
     }
 
@@ -107,5 +107,5 @@ class ZikoThreeFlyControls {
     }
 }
 
-const ZikoFlyControls = target => new ZikoThreeFlyControls(target);
-export { ZikoFlyControls }
+const ZikoTrackballControls = target => new ZikoThreeTrackballControls(target);
+export { ZikoTrackballControls }

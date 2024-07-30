@@ -5,3 +5,4 @@ export {
     ZikoTransformControls
  } from "./transform"
  export * from "./map"
+ export {ZikoFlyControls} from "./fly"

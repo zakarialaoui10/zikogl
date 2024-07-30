@@ -8,12 +8,11 @@ import {
     ZikoThreeObject3D,
  } from "../Object3D/ZikoThreeObject3D.js";
 import {  waitElm } from "../Utils";
-import { ZikoUIImage } from "ziko";
-// import { image2texture } from "../Loaders/image.js";
 import { 
     ZikoOrbitControls, 
     ZikoTransformControls,
     ZikoMapControls,
+    ZikoFlyControls
 } from "../Controls/index.js";
 import { isValidTexture, useTexture } from "../Loaders/texture.js";
 class ZikoThreeSceneGl extends ZikoUIElement{
@@ -235,6 +234,11 @@ class ZikoThreeSceneGl extends ZikoUIElement{
     }
     useMapControls(){
         if(!this.cache.controls.map)this.cache.controls.map=ZikoMapControls(this);
+        this.cache.controls?.orbit?.disable();
+        return this;
+    }
+    useFlyControls(){
+        if(!this.cache.controls.fly)this.cache.controls.fly=ZikoFlyControls(this);
         this.cache.controls?.orbit?.disable();
         return this;
     }

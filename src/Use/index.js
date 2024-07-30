@@ -12,6 +12,12 @@ export{
     useFog,
     useFogExp2
 } from "./fog"
+export{
+    useEdges
+} from "../Object3D/ZikoThreePrimitives/ZikoThreeEdges"
+export{
+    useWireframe
+} from "../Object3D/ZikoThreePrimitives/ZikoThreeWireframe"
 export {
     useCoordinates
 } from "./middlware"

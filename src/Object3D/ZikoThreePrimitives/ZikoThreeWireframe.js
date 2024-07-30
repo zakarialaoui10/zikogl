@@ -1,22 +1,22 @@
 import { ZikoThreeObject3D } from "../ZikoThreeObject3D";
 import { 
-    EdgesGeometry,
+    WireframeGeometry,
     LineSegments,
     LineBasicMaterial
  } from "three";
 import { ZikoThreeMesh } from "./ZikoThreeMesh";
-class ZikoThreeEdges extends ZikoThreeObject3D{
+class ZikoThreeWireframe extends ZikoThreeObject3D{
     constructor(ZikoMesh){
         super()
         if(ZikoMesh instanceof ZikoThreeMesh){
-            const Geometry = new EdgesGeometry(ZikoMesh.element.geometry);
+            const Geometry = new WireframeGeometry(ZikoMesh.element.geometry);
             const Material = new LineBasicMaterial(ZikoMesh.cache.materialAttributes);
             this.element=new LineSegments(Geometry, Material);
         }
         
     }
 }
-const useEdges=ZikoMesh=>new ZikoThreeEdges(ZikoMesh);
+const useWireframe=ZikoMesh=>new ZikoThreeWireframe(ZikoMesh);
 export{
-    useEdges
+    useWireframe
 }
