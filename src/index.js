@@ -1,7 +1,6 @@
 import * as THREE from "three"
 import { SceneGl } from "./Scene/gl.js";
 import { SceneCss } from "./Scene/css.js";
-import { image2texture } from "./Loaders/image.js";
 import { loadSVG } from "./Loaders/svg.js";
 //import { extrudeSvg } from "./Mesh/Geometries/index.js";
 import { 
@@ -14,7 +13,8 @@ import {
     useTransformControls,
     useFog,
     useFogExp2,
-    useCoordinates
+    useCoordinates,
+    useTexture
  } from "./Use";
 import { 
     gridHelper3,
@@ -45,7 +45,6 @@ const ZikoGl={
     THREE,
     ui3,
     loadSVG,
-    image2texture,
     SceneGl,
     SceneCss,
     cube3,
@@ -67,6 +66,7 @@ const ZikoGl={
     extrude3,
     gridHelper3,
     polarHelper3,
+    useTexture,
     useAmbientLight,
     useDirectionalLight,
     useHemisphereLight,

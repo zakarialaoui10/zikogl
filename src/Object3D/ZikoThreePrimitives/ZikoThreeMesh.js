@@ -26,7 +26,7 @@ import {
 import { __ZikoThreeMLP__ } from "./__ZikoThreeMLP__";
 class ZikoThreeMesh extends __ZikoThreeMLP__{
     constructor(Geometry,Material){
-        super(Geometry,Material);
+        super();
         this.element=new Mesh(Geometry,Material);
     }
     useMeshBasicMaterial(){
