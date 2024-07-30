@@ -3,7 +3,7 @@
 class ZikoThreeHelper {
     constructor(){
         this.element=null;
-        Object.assign(this, GeometryComposer.call(this));  
+        // Object.assign(this, GeometryComposer.call(this));  
         // mixin(this.__proto__,ZikoThreeGeometry)    
     }
 }
@@ -24,7 +24,7 @@ class ZikoThreePolarHelper extends ZikoThreeHelper{
 const gridHelper3=(n,m,color1,color2)=>new ZikoThreeGridHelper(n,m,color1,color2);
 const polarHelper3=(r,R,c,d)=>new ZikoThreePolarHelper(r,R,c,d);
 
-export{
-    gridHelper3,
-    polarHelper3
-}
+// export{
+//     gridHelper3,
+//     polarHelper3
+// }

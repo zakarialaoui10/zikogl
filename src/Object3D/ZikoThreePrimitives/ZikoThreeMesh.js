@@ -30,43 +30,43 @@ class ZikoThreeMesh extends __ZikoThreeMLP__{
         this.element=new Mesh(Geometry,Material);
     }
     useMeshBasicMaterial(){
-        this.element.material=MeshBasicMaterial(this.cache.materialAttributes);
+        this.element.material=new MeshBasicMaterial(this.cache.materialAttributes);
         return this;
     }
     useMeshPhongMaterial(){
-        this.element.material=MeshPhongMaterial(this.cache.materialAttributes);
+        this.element.material=new MeshPhongMaterial(this.cache.materialAttributes);
         return this;
     }
     useMeshDepthMaterial(){
-        this.element.material=MeshDepthMaterial(this.cache.materialAttributes);
+        this.element.material=new MeshDepthMaterial(this.cache.materialAttributes);
         return this;
     }
     useMeshLambertMaterial(){
-        this.element.material=MeshLambertMaterial(this.cache.materialAttributes);
+        this.element.material=new MeshLambertMaterial(this.cache.materialAttributes);
         return this;
     }
     useMeshPhysicalMaterial(){
-        this.element.material=MeshPhysicalMaterial(this.cache.materialAttributes);
+        this.element.material=new MeshPhysicalMaterial(this.cache.materialAttributes);
         return this;
     }
     useMeshNormalMaterial(){
-        this.element.material=MeshNormalMaterial(this.cache.materialAttributes);
+        this.element.material=new MeshNormalMaterial(this.cache.materialAttributes);
         return this;
     }
     useMeshStandardMaterial(){
-        this.element.material=MeshStandardMaterial(this.cache.materialAttributes);
+        this.element.material=new MeshStandardMaterial(this.cache.materialAttributes);
         return this;
     }
     useMeshDistanceMaterial(){
-        this.element.material=MeshDistanceMaterial(this.cache.materialAttributes);
+        this.element.material=new MeshDistanceMaterial(this.cache.materialAttributes);
         return this;
     }
     useMeshMatcapMaterial(){
-        this.element.material=MeshMatcapMaterial(this.cache.materialAttributes);
+        this.element.material=new MeshMatcapMaterial(this.cache.materialAttributes);
         return this;
     }
     useMeshToonMaterial(){
-        this.element.material=MeshToonMaterial(this.cache.materialAttributes);
+        this.element.material=new MeshToonMaterial(this.cache.materialAttributes);
         return this;
     }
 }

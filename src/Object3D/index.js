@@ -11,7 +11,7 @@ export{
     tetradron3,
     dodecahedron3,
     icosahedron3,
-    octahedron3
+    octahedron3,
 } from "./ZikoThreePrimitives/ZikoThreeMesh.js";
 export{
     line3
@@ -26,3 +26,7 @@ export {
 export {
     ui3
 } from "./ZikoThreeCss/index.js";
+export {
+    gridHelper3,
+    polarHelper3
+} from "./ZikoThreeHelper/index.js"

@@ -9,12 +9,13 @@ import {
  } from "../Object3D/ZikoThreeObject3D.js";
 import {  waitElm } from "../Utils";
 import { ZikoUIImage } from "ziko";
-import { image2texture } from "../Loaders/image.js";
+// import { image2texture } from "../Loaders/image.js";
 import { 
     ZikoOrbitControls, 
     ZikoTransformControls,
     ZikoMapControls,
 } from "../Controls/index.js";
+import { isValidTexture, useTexture } from "../Loaders/texture.js";
 class ZikoThreeSceneGl extends ZikoUIElement{
     constructor(w,h){
         super("figure","figure")
@@ -140,12 +141,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         if(typeof texture === "string"){
             if((texture.length===7||texture.length===4)&&texture[0]==="#")this.sceneGl.background=new THREE.Color(texture);
         }
-        if(texture instanceof THREE.Texture){
-            this.sceneGl.background=texture;
-        }
-        if(texture instanceof ZikoUIImage){
-            this.sceneGl.background=image2texture(texture);
-        }
+        if(isValidTexture(texture))this.sceneGl.background=useTexture(texture);
         this.renderGl();
         return this;
     }

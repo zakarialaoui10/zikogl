@@ -16,10 +16,6 @@ import {
     useCoordinates,
     useTexture
  } from "./Use";
-import { 
-    gridHelper3,
-    polarHelper3
- } from "./Helpers/index.js";
 import{
     cube3,
     plane3,
@@ -38,7 +34,9 @@ import{
     groupe3,
     svg3,
     extrude3,
-    ui3
+    ui3,
+    gridHelper3,
+    polarHelper3
 } from "./Object3D/index.js";
 import { useDragControls } from "./Controls/drag.js";
 const ZikoGl={
