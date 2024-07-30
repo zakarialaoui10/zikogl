@@ -11,3 +11,6 @@ export{
     useFog,
     useFogExp2
 } from "./fog"
+export {
+    useCoordinates
+} from "./middlware"

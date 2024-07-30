@@ -13,7 +13,8 @@ import {
     useSpotLight,
     useTransformControls,
     useFog,
-    useFogExp2
+    useFogExp2,
+    useCoordinates
  } from "./Use";
 import { 
     gridHelper3,
@@ -75,7 +76,8 @@ const ZikoGl={
     useTransformControls,
     useDragControls,
     useFog,
-    useFogExp2
+    useFogExp2,
+    useCoordinates
 }
 if ( globalThis.__ZikoGl__ ) {
     console.warn( 'WARNING: Multiple instances of Zikogl.js being imported.' );
