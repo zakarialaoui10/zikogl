@@ -12,12 +12,18 @@ class ZikoThreeExtrude extends ZikoThreeMesh{
 			type:"extrude"
 		})
     }
+    get(){
+		type="extrude"
+	}
 }
 class ZikoThreeExtrudeSvg extends ZikoThreeGroupe{
     constructor(svg,depth=5,bevelEnabled=false){
         super()
         this.add(...loadSVG(svg).map(n=>extrude3(n,depth,bevelEnabled)))
     }
+    get(){
+		type="svg"
+	}
 }
 const extrude3=(shape,depth=5,bevelEnabled=false)=>new ZikoThreeExtrude(shape,depth,bevelEnabled);
 //const svg3=(svg,depth=5,bevelEnabled=false)=>groupe3(...loadSVG(svg).map(n=>extrude3(n,depth,bevelEnabled)))

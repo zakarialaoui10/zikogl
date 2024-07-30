@@ -63,7 +63,6 @@ class ZikoThreeArrowHelper extends ZikoThreeHelper{
         this.element=new ArrowHelper(new Vector3(...directionVector),new Vector3(...originVector),length,color)
     }
 }
-
 const useAxesHelper=(size)=>new ZikoThreeAxesHelper(size);
 const useGridHelper=(N,M,color1,color2)=>new ZikoThreeGridHelper(N,M,color1,color2);
 const usePolarHelper=(radius,radials,circles,divisions)=>new ZikoThreePolarHelper(radius,radials,circles,divisions);

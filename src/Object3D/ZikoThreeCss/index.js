@@ -8,6 +8,9 @@ class ZikoThreeCss extends ZikoThreeObject3D{
         }
         this.element=new CSS3DObject(UIElement.element)
     }
+    get type(){
+		return "css";
+	}
 }
 const ui3=UIElement=>new ZikoThreeCss(UIElement)
 export {ui3}

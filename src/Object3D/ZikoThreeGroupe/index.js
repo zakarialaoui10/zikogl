@@ -13,6 +13,9 @@ class ZikoThreeGroupe extends ZikoThreeObject3D{
 			type:"groupe"
 		})
 	}
+	get type(){
+		return "groupe";
+	}
 	add(...obj){
 		for(let i=0;i<obj.length;i++){
 			if(obj[i] instanceof THREE.Mesh){
