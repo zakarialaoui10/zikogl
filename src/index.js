@@ -35,8 +35,12 @@ import{
     svg3,
     extrude3,
     ui3,
+    axesHelper3,
     gridHelper3,
-    polarHelper3
+    polarHelper3,
+    planeHelper3,
+    boxHelper3,
+    boxVectorHelper3
 } from "./Object3D/index.js";
 import { useDragControls } from "./Controls/drag.js";
 const ZikoGl={
@@ -62,8 +66,12 @@ const ZikoGl={
     groupe3,
     svg3,
     extrude3,
+    axesHelper3,
     gridHelper3,
     polarHelper3,
+    planeHelper3,
+    boxHelper3,
+    boxVectorHelper3,
     useTexture,
     useAmbientLight,
     useDirectionalLight,

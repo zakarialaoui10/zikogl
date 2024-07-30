@@ -29,6 +29,9 @@ class ZikoThreeMesh extends __ZikoThreeMLP__{
         super();
         this.element=new Mesh(Geometry,Material);
     }
+    get type(){
+        return "mesh"
+    }
     useMeshBasicMaterial(){
         this.element.material=new MeshBasicMaterial(this.cache.materialAttributes);
         return this;

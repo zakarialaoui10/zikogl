@@ -27,6 +27,10 @@ export {
     ui3
 } from "./ZikoThreeCss/index.js";
 export {
+    axesHelper3,
     gridHelper3,
-    polarHelper3
+    polarHelper3,
+    planeHelper3,
+    boxHelper3,
+    boxVectorHelper3
 } from "./ZikoThreeHelper/index.js"
