@@ -1,4 +1,5 @@
 import { TransformControls } from 'three/addons/controls/TransformControls.js';
+import { ZikoThreeLightHelper } from "../Object3D/ZikoThreeHelper/index.js"
 class ZikoThreeTransformControls{
     #TARGET
     constructor(target){
@@ -61,7 +62,8 @@ class ZikoThreeTransformControls{
         return this;
     }
     attach(obj){
-        this.control.attach(obj.element);
+        if(obj instanceof ZikoThreeLightHelper)this.control.attach(obj.attached_light);
+        else this.control.attach(obj.element);
         return this;
     }
 }

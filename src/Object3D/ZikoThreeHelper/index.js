@@ -73,6 +73,7 @@ class ZikoThreeLightHelper extends ZikoThreeHelper{
         if(ZikoLight.type!=="light"){
             // Err
         }
+        this.attached_light=ZikoLight;
         switch(ZikoLight.element.type){
             case "DirectionalLight":this.element=new DirectionalLightHelper(ZikoLight.element,size,color);break;
             case "HemisphereLight":this.element=new HemisphereLightHelper(ZikoLight.element,size,color);break;
@@ -97,5 +98,6 @@ export{
     useBoxHelper,
     useBoxVectorHelper,
     useArrowHelper,
-    useLightHelper
+    useLightHelper,
+    ZikoThreeLightHelper,
 }
