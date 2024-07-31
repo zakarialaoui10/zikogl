@@ -9,6 +9,10 @@ import {
     Box3Helper,
     Box3,
     ArrowHelper,
+    DirectionalLightHelper,
+    HemisphereLightHelper,
+    SpotLightHelper,
+    PointLightHelper,
  } from "three";
 import { ZikoThreeObject3D } from "../ZikoThreeObject3D";
 class ZikoThreeHelper extends ZikoThreeObject3D{
@@ -63,6 +67,20 @@ class ZikoThreeArrowHelper extends ZikoThreeHelper{
         this.element=new ArrowHelper(new Vector3(...directionVector),new Vector3(...originVector),length,color)
     }
 }
+class ZikoThreeLightHelper extends ZikoThreeHelper{
+    constructor(ZikoLight,color,size){
+        super()
+        if(ZikoLight.type!=="light"){
+            // Err
+        }
+        switch(ZikoLight.element.type){
+            case "DirectionalLight":this.element=new DirectionalLightHelper(ZikoLight.element,size,color);break;
+            case "HemisphereLight":this.element=new HemisphereLightHelper(ZikoLight.element,size,color);break;
+            case "SpotLight":this.element=new SpotLightHelper(ZikoLight.element,color);break;
+            case "PointLight":this.element=new PointLightHelper(ZikoLight.element,size,color);break;
+        }
+    }
+}
 const useAxesHelper=(size)=>new ZikoThreeAxesHelper(size);
 const useGridHelper=(N,M,color1,color2)=>new ZikoThreeGridHelper(N,M,color1,color2);
 const usePolarHelper=(radius,radials,circles,divisions)=>new ZikoThreePolarHelper(radius,radials,circles,divisions);
@@ -70,6 +88,7 @@ const usePlaneHelper=(V,size,color)=>new ZikoThreePlaneHelper(V,size,color);
 const useBoxHelper=(ZikoGlObject,color)=>new ZikoThreeBoxHelper(ZikoGlObject,color);
 const useBoxVectorHelper=(V0=[0,0,0],V1=[1,1,1],color=0x222222)=>new ZikoThreeBox3Helper(V0,V1,color);
 const useArrowHelper=(originVector,directionVector,length,color)=>new ZikoThreeArrowHelper(originVector,directionVector,length,color);
+const useLightHelper=(ZikoLight,color,size)=>new ZikoThreeLightHelper(ZikoLight,color,size);
 export{
     useAxesHelper,
     useGridHelper,
@@ -77,5 +96,6 @@ export{
     usePlaneHelper,
     useBoxHelper,
     useBoxVectorHelper,
-    useArrowHelper
+    useArrowHelper,
+    useLightHelper
 }

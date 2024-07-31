@@ -12,6 +12,9 @@ class ZikoThreeLight extends ZikoThreeObject3D {
     constructor() {
         super();
     }
+    get type(){
+        return "light";
+    }
 }
 
 class ZikoThreeAmbientLight extends ZikoThreeLight {
