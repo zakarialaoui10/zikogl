@@ -1,7 +1,7 @@
 import { Mesh,Color } from "three";
 import { ZikoThreeObject3D } from "../ZikoThreeObject3D";
 import { isValidTexture, useTexture } from "../../Loaders/texture";
-class __ZikoThreeMLP__ extends ZikoThreeObject3D{
+class __ZikoThreeGeoMatBased__ extends ZikoThreeObject3D{
     constructor(){
         super()
         this.cache={
@@ -53,5 +53,5 @@ class __ZikoThreeMLP__ extends ZikoThreeObject3D{
 }
 
 export{
-    __ZikoThreeMLP__
+    __ZikoThreeGeoMatBased__
 }

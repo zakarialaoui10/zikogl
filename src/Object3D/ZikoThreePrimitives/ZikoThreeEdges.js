@@ -5,7 +5,8 @@ import {
     LineBasicMaterial
  } from "three";
 import { ZikoThreeMesh } from "./ZikoThreeMesh";
-class ZikoThreeEdges extends ZikoThreeObject3D{
+import { __ZikoThreeGeoMatBased__ } from "./__ZikoThreeGeoMatBased__";
+class ZikoThreeEdges extends __ZikoThreeGeoMatBased__{
     constructor(ZikoMesh){
         super()
         if(ZikoMesh instanceof ZikoThreeMesh){
@@ -15,7 +16,7 @@ class ZikoThreeEdges extends ZikoThreeObject3D{
         }
     }
     get type(){
-        return "edges"
+        return "edges";
     }
 }
 const useEdges=ZikoMesh=>new ZikoThreeEdges(ZikoMesh);

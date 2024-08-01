@@ -4,8 +4,8 @@ import {
     LineBasicMaterial,
     LineDashedMaterial
  } from "three";
-import { __ZikoThreeMLP__ } from "./__ZikoThreeMLP__";
-class ZikoThreeLine extends __ZikoThreeMLP__{
+import { __ZikoThreeGeoMatBased__ } from "./__ZikoThreeGeoMatBased__";
+class ZikoThreeLine extends __ZikoThreeGeoMatBased__{
     constructor(X,Y,Z){
         super();
         let points = [X,Y,Z].map(pts=>new THREE.Vector3(...pts));

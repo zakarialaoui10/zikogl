@@ -34,4 +34,7 @@ export {
     useBoxHelper,
     useBoxVectorHelper
 } from "./ZikoThreeHelper/index.js"
-export { text3 } from "./ZikoThreeText/ZikoThreeText.js";
+export { 
+    text3,
+    text2
+ } from "./ZikoThreePrimitives/ZikoThreeText.js";

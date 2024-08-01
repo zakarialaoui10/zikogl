@@ -23,7 +23,8 @@ import {
     useCoordinates,
     useTexture,
     useEdges,
-    useWireframe
+    useWireframe,
+    usePoints,
  } from "./Use";
 import{
     cube3,
@@ -44,11 +45,15 @@ import{
     svg3,
     extrude3,
     ui3,
+    text3,
+    text2
 } from "./Object3D/index.js";
 import { useDragControls } from "./Controls/drag.js";
 const ZikoGl={
     THREE,
     ui3,
+    text3,
+    text2,
     loadSVG,
     SceneGl,
     SceneCss,
@@ -90,7 +95,8 @@ const ZikoGl={
     useFogExp2,
     useCoordinates,
     useEdges,
-    useWireframe
+    useWireframe,
+    usePoints
 }
 if ( globalThis.__ZikoGl__ ) {
     console.warn( 'WARNING: Multiple instances of Zikogl.js being imported.' );

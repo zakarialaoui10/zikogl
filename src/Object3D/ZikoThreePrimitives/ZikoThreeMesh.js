@@ -23,8 +23,8 @@ import {
     MeshMatcapMaterial,
     MeshToonMaterial
  } from "three";
-import { __ZikoThreeMLP__ } from "./__ZikoThreeMLP__";
-class ZikoThreeMesh extends __ZikoThreeMLP__{
+import { __ZikoThreeGeoMatBased__ } from "./__ZikoThreeGeoMatBased__";
+class ZikoThreeMesh extends __ZikoThreeGeoMatBased__{
     constructor(Geometry,Material){
         super();
         this.element=new Mesh(Geometry,Material);

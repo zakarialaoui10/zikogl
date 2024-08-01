@@ -24,6 +24,7 @@ export{
 } from "./fog"
 export { useEdges } from "../Object3D/ZikoThreePrimitives/ZikoThreeEdges"
 export { useWireframe } from "../Object3D/ZikoThreePrimitives/ZikoThreeWireframe";
+export { usePoints } from "../Object3D/ZikoThreePrimitives/ZikoThreePoints";
 export {
     useCoordinates
 } from "./middlware"

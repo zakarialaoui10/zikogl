@@ -1,16 +1,23 @@
-import { __ZikoThreeMLP__ } from "./__ZikoThreeMLP__";
-class ZikoThreePoints extends __ZikoThreeMLP__{
-    constructor(Geometry,Material){
+import { ZikoThreeObject3D } from "../ZikoThreeObject3D";
+import { 
+    Points,
+    PointsMaterial
+ } from "three";
+import { ZikoThreeMesh } from "./ZikoThreeMesh";
+import { __ZikoThreeGeoMatBased__ } from "./__ZikoThreeGeoMatBased__";
+class ZikoThreePoints extends __ZikoThreeGeoMatBased__{
+    constructor(ZikoMesh){
         super()
+        if(ZikoMesh instanceof ZikoThreeMesh){
+            const Material = new PointsMaterial(ZikoMesh.cache.materialAttributes);
+            this.element=new Points(ZikoMesh.element.geometry, Material);
+        }
     }
     get type(){
         return "points"
     }
-    usePointsMaterial(){
-        this.element.material=new THREE.PointsMaterial(this.cache.materialAttributes);
-        return this;      
-    }
 }
+const usePoints=ZikoMesh=>new ZikoThreePoints(ZikoMesh);
 export{
-    ZikoThreePoints
+    usePoints
 }
