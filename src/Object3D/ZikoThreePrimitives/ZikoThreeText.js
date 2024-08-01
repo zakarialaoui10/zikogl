@@ -24,10 +24,16 @@ class ZikoThreeText3D extends ZikoThreeText{
                 size,
                 height
             });
-        const material = new MeshBasicMaterial({ color: 0x00ff00 });
+        const material = new MeshBasicMaterial({ /* color: 0x00ff00 */ });
         this.element=new Mesh(geometry, material);
         this.element.geometry.computeBoundingBox();
         this.element.geometry.boundingBox.getCenter(this.element.position).multiplyScalar(-1);
+    }
+    get class(){
+        return[
+            "text",
+            "3d"
+        ]
     }
 }
 class ZikoThreeText2D extends ZikoThreeText{
@@ -35,10 +41,16 @@ class ZikoThreeText2D extends ZikoThreeText{
         super();
         const shapes = font.generateShapes( text, size );
 	    const geometry = new ShapeGeometry( shapes );
-        const material = new MeshBasicMaterial({ color: 0x00ff00 });
+        const material = new MeshBasicMaterial({ /* color: 0x00ff00 */ });
         this.element=new Mesh(geometry, material);
         this.element.geometry.computeBoundingBox();
         this.element.geometry.boundingBox.getCenter(this.element.position).multiplyScalar(-1);
+    }
+    get class(){
+        return[
+            "text",
+            "3d"
+        ]
     }
 }
 const text3=(text,size,height)=>new ZikoThreeText3D(text,size,height);
