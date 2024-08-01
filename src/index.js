@@ -25,6 +25,7 @@ import {
     useEdges,
     useWireframe,
     usePoints,
+    useSprite
  } from "./Use";
 import{
     cube3,
@@ -98,7 +99,8 @@ const ZikoGl={
     useCoordinates,
     useEdges,
     useWireframe,
-    usePoints
+    usePoints,
+    useSprite
 }
 if ( globalThis.__ZikoGl__ ) {
     console.warn( 'WARNING: Multiple instances of Zikogl.js being imported.' );
