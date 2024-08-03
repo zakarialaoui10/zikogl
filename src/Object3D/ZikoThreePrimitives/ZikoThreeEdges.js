@@ -1,4 +1,3 @@
-import { ZikoThreeObject3D } from "../ZikoThreeObject3D";
 import { 
     EdgesGeometry,
     LineSegments,
