@@ -9,7 +9,8 @@ import {
     usePointLight,
     useRectAreaLight,
     useSpotLight,
-    // useTransformControls,
+} from "./Light/index.js";
+import{
     useAxesHelper,
     useGridHelper,
     usePolarHelper,
@@ -17,7 +18,9 @@ import {
     useBoxHelper,
     useBoxVectorHelper,
     useArrowHelper,
-    useLightHelper,
+    useLightHelper
+} from "./Object3D/ZikoThreeHelper/index.js"
+import { 
     useFog,
     useFogExp2,
     useCoordinates,

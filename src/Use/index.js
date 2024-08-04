@@ -1,21 +1,3 @@
-export { 
-    useAmbientLight,
-    useDirectionalLight,
-    useHemisphereLight,
-    usePointLight,
-    useRectAreaLight,
-    useSpotLight,
-} from "../Light";
-export {
-    useAxesHelper,
-    useGridHelper,
-    usePolarHelper,
-    usePlaneHelper,
-    useBoxHelper,
-    useBoxVectorHelper,
-    useArrowHelper,
-    useLightHelper
-} from "../Object3D/ZikoThreeHelper/index.js"
 export { useTexture } from "../Loaders/texture"
 // export { useTransformControls } from "../Controls/transform";
 export{
@@ -30,3 +12,4 @@ export { useSprite } from "../Object3D/ZikoThreePrimitives/ZikoThreeSprite";
 export {
     useCoordinates
 } from "./middlware"
+

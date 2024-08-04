@@ -1,8 +1,7 @@
 
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
-//import terser from '@rollup/plugin-terser';
-
+import terser from '@rollup/plugin-terser';
 const banner= `
 /*
   Project: zikogl
@@ -16,20 +15,34 @@ const banner= `
 export default {
   input: 'src/index.js',
   output: [
+  //   {
+  //   file: 'dist/zikogl.cjs',
+  //   format: 'cjs',
+  //   banner,
+  //   globals: {
+  //     ziko: 'Ziko'
+  //   }
+  // },
+  // {
+  //   file: 'dist/zikogl.mjs',
+  //   format: 'es',
+  //   banner,
+  //   globals: {
+  //     ziko: 'Ziko'
+  //   }
+  // },
   {
     file: 'dist/zikogl.js',
     format: 'umd',
-    name:"ZikoGl",
     banner,
-    exports: "named",
+    name:"ZikoGl",
     globals: {
-      Ziko: 'Ziko'
+      ziko: 'Ziko'
     }
   }
 ],
-external: ["Ziko"],
-  plugins: [
-    resolve(), 
-    commonjs(),
-  ],
+  external: ["ziko"],
+  plugins: [resolve(), commonjs()
+    //,terser()
+    ],
 };
