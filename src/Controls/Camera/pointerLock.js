@@ -1,14 +1,14 @@
-import { FlyControls } from 'three/addons/controls/FlyControls.js';
+import { PointerLockControls } from 'three/examples/jsm/Addons.js';
 import { __ZikoThreeCameraControls__ } from './__ZikoThreeCameraControls__';
 
-class ZikoThreeFlyControls extends __ZikoThreeCameraControls__{
+class ZikoThreePointerLockControls extends __ZikoThreeCameraControls__{
     constructor(target) {
         super(target);
         this.init()
         this.onChange();
     }
     init() {
-        this.control = new FlyControls(this.__TARGET__.camera.currentCamera, this.__TARGET__.rendererTarget.domElement);
+        this.control = new PointerLockControls(this.__TARGET__.camera.currentCamera, this.__TARGET__.rendererTarget.domElement);
         return this;
     }
     onChange(handler, renderGl = true, renderCss = true) {
@@ -26,5 +26,5 @@ class ZikoThreeFlyControls extends __ZikoThreeCameraControls__{
     }
 }
 
-const ZikoFlyControls = target => new ZikoThreeFlyControls(target);
-export { ZikoFlyControls }
+const ZikoPointerLockControls = target => new ZikoThreePointerLockControls(target);
+export { ZikoPointerLockControls }

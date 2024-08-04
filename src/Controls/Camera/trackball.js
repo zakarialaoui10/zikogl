@@ -1,16 +1,15 @@
 import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
-import { Vector3, Quaternion } from 'three/src/Three.js';
 import { __ZikoThreeCameraControls__ } from './__ZikoThreeCameraControls__';
 
 class ZikoThreeTrackballControls extends __ZikoThreeCameraControls__{
     constructor(target) {
         super(target)
         this.control = new TrackballControls(target.camera.currentCamera, target.rendererTarget.domElement);
+        this.init(false)
         this.onChange();
     }
     init() {
         this.control = new TrackballControls(this.__TARGET__.camera.currentCamera, this.__TARGET__.rendererTarget.domElement);
-        this.restore();
         return this;
     }
     onChange(handler, renderGl = true, renderCss = true) {

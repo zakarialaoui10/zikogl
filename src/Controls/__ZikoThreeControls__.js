@@ -1,5 +1,3 @@
-// import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { Vector3,Quaternion } from 'three/src/Three.js';
 class __ZikoThreeControls__{
     constructor(target){
         this.__TARGET__=target;
@@ -11,8 +9,8 @@ class __ZikoThreeControls__{
     get currentState(){
         return null
     }
-    enable(){
-        this.restore();
+    enable(restore=true){
+        if(restore)this.restore();
         this.control.enabled=true;
         return this;
     }
@@ -29,8 +27,8 @@ class __ZikoThreeControls__{
         this.isPaused=false;
         return this;
     }
-    dispose(){
-        this.save();
+    dispose(save=false){
+        if(save)this.save();
         this.control.dispose();
         return this;
     }
