@@ -1,18 +1,10 @@
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { Vector3,Quaternion } from 'three/src/Three.js';
-import { __ZikoThreeControls__ } from './__ZikoThreeControls__';
-class ZikoThreeOrbitControls extends __ZikoThreeControls__{
+// import { Vector3,Quaternion } from 'three/src/Three.js';
+import { __ZikoThreeCameraControls__ } from './__ZikoThreeCameraControls__';
+class ZikoThreeOrbitControls extends __ZikoThreeCameraControls__{
     constructor(target){
         super(target)
-        // this.__TARGET__=target;
         this.control=new OrbitControls(target.camera.currentCamera,target.rendererTarget.domElement);
-        // this.isPaused=false;
-        // this.__cache__={
-        //     saved_state:{
-        //         position:new Vector3(),
-        //         quaternion:new Quaternion()
-        //     }   
-        // }
         this.onChange();
     }
     // get currentState(){

@@ -9,7 +9,7 @@ import {
     usePointLight,
     useRectAreaLight,
     useSpotLight,
-    useTransformControls,
+    // useTransformControls,
     useAxesHelper,
     useGridHelper,
     usePolarHelper,
@@ -50,7 +50,10 @@ import{
     text3,
     text2
 } from "./Object3D/index.js";
-import { useDragControls } from "./Controls/drag.js";
+import { 
+    useDragControls,
+    useTransformControls
+ } from "./Controls";
 const ZikoGl={
     THREE,
     ui3,

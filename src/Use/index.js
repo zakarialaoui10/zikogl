@@ -17,7 +17,7 @@ export {
     useLightHelper
 } from "../Object3D/ZikoThreeHelper/index.js"
 export { useTexture } from "../Loaders/texture"
-export { useTransformControls } from "../Controls/transform";
+// export { useTransformControls } from "../Controls/transform";
 export{
     useFog,
     useFogExp2

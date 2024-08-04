@@ -1,59 +1,34 @@
 import { TransformControls } from 'three/addons/controls/TransformControls.js';
-import { ZikoThreeLightHelper } from "../Object3D/ZikoThreeHelper/index.js"
-class ZikoThreeTransformControls{
-    #TARGET
+import { ZikoThreeLightHelper } from "../../Object3D/ZikoThreeHelper/index.js"
+import { __ZikoThreeObjectControls__ } from './__ZikoThreeObjectsControls__.js';
+class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
     constructor(target){
-        this.#TARGET=target;
+        super(target)
         this.control=new TransformControls(target.camera.currentCamera,target.rendererGl.domElement);
-        this.#TARGET.sceneGl.add(this.control)
+        this.__TARGET__.sceneGl.add(this.control);
         this.isPaused=false;
         this.mode="translate";
         this.onChange()
-        this.t=this.#TARGET
     }
     add(){
-        this.#TARGET.sceneGl.add(this.control)
+        this.__TARGET__.sceneGl.add(this.control);
         return this;  
-    }
-    remove(){
-        this.#TARGET.sceneGl.remove(this.control)
-        return this;    
-    }
-    enable(){
-        this.control.enabled=true;
-        return this;
-    }
-    disable(){
-        this.control.enabled=true;
-        return this;
-    }
-    pause(){
-        this.isPaused=true;
-        return this;
-    }
-    resume(){
-        this.isPaused=false;
-        return this;
-    }
-    dispose(){
-        this.control.dispose();
-        return this;
     }
     onChange(handler){
         this.control.addEventListener("change",()=>{
             if(!this.isPaused){
-                if(this.#TARGET.cache.type==="css")this.#TARGET.renderCss()
-                this.#TARGET.renderGl()
+                if(this.__TARGET__.cache.type==="css")this.__TARGET__.renderCss()
+                this.__TARGET__.renderGl()
                 if(handler)handler()
             }
         });
         this.control.addEventListener('dragging-changed',( event )=>{
-            if(this.#TARGET.cache.controls.orbit){
-                event.value?this.#TARGET.cache.controls.orbit.disable():this.#TARGET.cache.controls.orbit.enable();
+            if(this.__TARGET__.cache.controls.orbit){
+                event.value?this.__TARGET__.cache.controls.orbit.disable():this.__TARGET__.cache.controls.orbit.enable();
             }
             //console.log(event.value)
-            //this.#TARGET.cache.controls.orbit.enabled = ! event.value;
-            //console.log(this.#TARGET.cache.controls.orbit.enabled )
+            //this.__TARGET__.cache.controls.orbit.enabled = ! event.value;
+            //console.log(this.__TARGET__.cache.controls.orbit.enabled )
         })
         return this;
     }

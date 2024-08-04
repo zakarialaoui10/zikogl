@@ -4,50 +4,12 @@ class __ZikoThreeControls__{
     constructor(target){
         this.__TARGET__=target;
         this.isPaused=false;
-        this.__cache__={
-            saved_state:{
-                position:new Vector3(),
-                quaternion:new Quaternion()
-            }   
-        }
-
     }
     get type(){
         return "controls";
     }
     get currentState(){
-        const state={
-            position:new Vector3(),
-            quaternion:new Quaternion()
-        }
-        state.position.copy(this.__TARGET__.camera.currentCamera.position);
-        state.quaternion.copy(this.__TARGET__.camera.currentCamera.quaternion);
-        return state;
-    }
-    save(){
-        this.__cache__.saved_state.position.copy(this.__TARGET__.camera.currentCamera.position);
-        this.__cache__.saved_state.quaternion.copy(this.__TARGET__.camera.currentCamera.quaternion);
-        return this;
-    }
-    useState(state,renderGl=true,renderCss=true){
-        let {position,quaternion}=state;
-		if(!(position instanceof Vector3)){
-			const {x,y,z}=position;
-			position=new Vector3(x,y,z)
-		}
-		if(!(quaternion instanceof Quaternion)){
-			const {_x,_y,_z,_w}=quaternion;
-			quaternion=new Quaternion(_x,_y,_z,_w)
-		}
-		this.__TARGET__.camera.currentCamera.position.copy(position);
-        this.__TARGET__.camera.currentCamera.quaternion.copy(quaternion);
-		this.__TARGET__.camera.currentCamera.updateMatrixWorld();
-		if(renderGl)this.__TARGET__?.renderGl()
-		if(renderCss)this.__TARGET__?.renderCss()
-	}
-    restore(renderGl=false,renderCss=false){
-        this.useState(this.__cache__.saved_state,renderGl,renderCss)
-        return this;
+        return null
     }
     enable(){
         this.restore();
@@ -73,8 +35,12 @@ class __ZikoThreeControls__{
         return this;
     }
     init(){
-        this.control=new OrbitControls(this.__TARGET__.camera.currentCamera,this.__TARGET__.rendererTarget.domElement);
-        this.restore();
+        return this;
+    }
+    save(){
+        return this;
+    }
+    restore(){
         return this;
     }
     clear(){
