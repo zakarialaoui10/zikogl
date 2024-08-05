@@ -12,6 +12,10 @@ class ZikoThreeObject3D{
         }
         return this;
     }
+    // render(){
+    //     this.parent.add(this)
+    //     return this;
+    // }
     unrender(){
         if(this.parent && this.parent.items.includes(this)){
             this.parent.remove(this)

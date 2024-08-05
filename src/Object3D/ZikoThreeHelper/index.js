@@ -25,31 +25,44 @@ class ZikoThreeHelper extends ZikoThreeObject3D{
     clone(){
         const OBJECT = new this.constructor();
         OBJECT.__proto__=this.__proto__;
-        OBJECT.element=new this.element.constructor();
+        OBJECT.element=new this.element.constructor(...this.cache.args);
         return OBJECT
     }
 }
 class ZikoThreeAxesHelper extends ZikoThreeHelper{
     constructor(size){
         super()
+        Object.assign(this.cache,{
+            args:[size]
+        })
         this.element=new AxesHelper(size);
     }
 }
 class ZikoThreeGridHelper extends ZikoThreeHelper{
     constructor(n,m,color1,color2){
         super()
+        Object.assign(this.cache,{
+            args:[n,m,color1,color2]
+        })
         this.element=new GridHelper(n,m,color1,color2);
     }
 }
 class ZikoThreePolarHelper extends ZikoThreeHelper{
     constructor(radius,radials,circles,divisions){
         super()
+        Object.assign(this.cache,{
+            args:[radius,radials,circles,divisions]
+        })
         this.element=new PolarGridHelper(radius,radials,circles,divisions);
+
     }
 }
 class ZikoThreePlaneHelper extends ZikoThreeHelper{
     constructor(V,size,color){
         super()
+        Object.assign(this.cache,{
+            args:[V,size,color]
+        })
         this.plane= new Plane( new Vector3( ...V ), size );
         this.element=new PlaneHelper(this.plane,size,color);
     }
@@ -57,12 +70,19 @@ class ZikoThreePlaneHelper extends ZikoThreeHelper{
 class ZikoThreeBoxHelper extends ZikoThreeHelper{
     constructor(ZikoGlObject,color){
         super()
+        Object.assign(this.cache,{
+            args:[ZikoGlObject,color]
+        })
         this.element=new BoxHelper(ZikoGlObject.element,color);
     }
+    // Checl Clone
 }
 class ZikoThreeBox3Helper extends ZikoThreeHelper{
     constructor(V0,V1,color){
         super()
+        Object.assign(this.cache,{
+            args:[V0,V1,color]
+        })
         this.box=new Box3(Vector3(...V0),Vector3(...V1),color)
         this.element=new Box3Helper(this.box,color);
     }
@@ -70,12 +90,18 @@ class ZikoThreeBox3Helper extends ZikoThreeHelper{
 class ZikoThreeArrowHelper extends ZikoThreeHelper{
     constructor(originVector,directionVector,length,color){
         super()
+        Object.assign(this.cache,{
+            args:[originVector,directionVector,length,color]
+        })
         this.element=new ArrowHelper(new Vector3(...directionVector),new Vector3(...originVector),length,color)
     }
 }
 class ZikoThreeLightHelper extends ZikoThreeHelper{
     constructor(ZikoLight,color,size){
         super()
+        Object.assign(this.cache,{
+            args:[ZikoLight,color,size]
+        })
         if(ZikoLight.type!=="light"){
             // Err
         }
@@ -87,6 +113,7 @@ class ZikoThreeLightHelper extends ZikoThreeHelper{
             case "PointLight":this.element=new PointLightHelper(ZikoLight.element,size,color);break;
         }
     }
+    // Check Clone
 }
 const useAxesHelper=(size)=>new ZikoThreeAxesHelper(size);
 const useGridHelper=(N,M,color1,color2)=>new ZikoThreeGridHelper(N,M,color1,color2);
