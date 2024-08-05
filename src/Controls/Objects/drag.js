@@ -74,6 +74,8 @@ class ZikoThreeDragControls extends __ZikoThreeObjectControls__{
                 element.element.scale.copy(state.scale);
             }
         });
+        if(this.__TARGET__.type==="css")this.__TARGET__.renderCss()
+        this.__TARGET__.renderGl()
     }
 }
 

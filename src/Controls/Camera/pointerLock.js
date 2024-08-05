@@ -17,7 +17,7 @@ class ZikoThreePointerLockControls extends __ZikoThreeCameraControls__{
                 this.__TARGET__.renderGl();
                 if (renderGl) this.__TARGET__.renderGl();
                 if (this.__TARGET__.cache.type === "css" && renderCss) this.__TARGET__.renderCss();
-                this.control.update(0.1);
+                // this.control.update(0.1);
                 if (handler) handler();
             }
 

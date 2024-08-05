@@ -280,13 +280,13 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         if(!this.cache.controls.firstPerson)this.cache.controls.firstPerson=ZikoFirstPersonControls(this);
         ["orbit","trackball","map","fly","pointerLock","arcball"].forEach(n=>this.controls[n]?.disable(false));
         this.controls.firstPerson.enable(false);
-        this.cache.currentCameraControls=this.cache.controls.arcball;
+        this.cache.currentCameraControls=this.cache.controls.firstPerson;
         return this;
     }
-    useTransformControls(){
-        if(!this.cache.controls.transform)this.cache.controls.transform=ZikoTransformControls(this);
-        return this;
-    }
+    // useTransformControls(){
+    //     if(!this.cache.controls.transform)this.cache.controls.transform=ZikoTransformControls(this);
+    //     return this;
+    // }
     usePerspectiveCamera(){
         this.camera.usePerspective();
         return this;

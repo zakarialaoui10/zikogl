@@ -22,6 +22,12 @@ class ZikoThreeHelper extends ZikoThreeObject3D{
     get type(){
         return "helper";
     }
+    clone(){
+        const OBJECT = new this.constructor();
+        OBJECT.__proto__=this.__proto__;
+        OBJECT.element=new this.element.constructor();
+        return OBJECT
+    }
 }
 class ZikoThreeAxesHelper extends ZikoThreeHelper{
     constructor(size){

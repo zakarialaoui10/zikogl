@@ -31,12 +31,11 @@ class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
                 event.value?this.__TARGET__.currentCameraControls.disable():this.__TARGET__.currentCameraControls.enable();
                 if(event.value){
                     this.__TARGET__.currentCameraControls.disable();
-                    this.__TARGET__.controls.drag.disable(true);
-
+                    this.__TARGET__.controls.drag?.disable(true);
                 }
                 else{
                     this.__TARGET__.currentCameraControls.enable();
-                    this.__TARGET__.controls.drag.enable(true);
+                    this.__TARGET__.controls.drag?.enable(true);
                 }
             }
         })
@@ -72,7 +71,9 @@ class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
                 object.scale.copy(savedState.scale);
             }
         }
-    }
+        if(this.__TARGET__.type==="css")this.__TARGET__.renderCss();
+        this.__TARGET__.renderGl();
+    } 
 }
 
 const ZikoTransformControls=target=>new ZikoThreeTransformControls(target);

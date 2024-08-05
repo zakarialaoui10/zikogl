@@ -1,4 +1,4 @@
-import { Mesh,Color } from "three";
+import { Color } from "three";
 import { ZikoThreeObject3D } from "../ZikoThreeObject3D";
 import { isValidTexture, useTexture } from "../../Loaders/texture";
 class __ZikoThreeGeoMatBased__ extends ZikoThreeObject3D{
@@ -8,6 +8,14 @@ class __ZikoThreeGeoMatBased__ extends ZikoThreeObject3D{
             type:"gl",
             materialAttributes:{}
         }
+    }
+    clone(){
+        const OBJECT = new this.constructor();
+        OBJECT.__proto__=this.__proto__;
+        OBJECT.element=new this.element.constructor();
+        OBJECT.element.geometry=new this.element.geometry.constructor();
+        OBJECT.element.material=new this.element.material.constructor(this.cache.materialAttributes);
+        return OBJECT
     }
     get isHovered(){
     }
