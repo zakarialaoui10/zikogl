@@ -1,6 +1,7 @@
 import { TransformControls } from 'three/addons/controls/TransformControls.js';
 import { ZikoThreeLightHelper } from "../../Object3D/ZikoThreeHelper/index.js"
 import { __ZikoThreeObjectControls__ } from './__ZikoThreeObjectsControls__.js';
+import { ZikoThreeObject3D } from '../../Object3D/ZikoThreeObject3D.js';
 class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
     constructor(target){
         super(target)
@@ -23,8 +24,17 @@ class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
             }
         });
         this.control.addEventListener('dragging-changed',( event )=>{
-            if(this.__TARGET__.cache.controls.orbit){
-                event.value?this.__TARGET__.cache.controls.orbit.disable():this.__TARGET__.cache.controls.orbit.enable();
+            if(this.__TARGET__.currentCameraControls){
+                event.value?this.__TARGET__.currentCameraControls.disable():this.__TARGET__.currentCameraControls.enable();
+                if(event.value){
+                    this.__TARGET__.currentCameraControls.disable();
+                    this.__TARGET__.controls.drag.disable(true);
+
+                }
+                else{
+                    this.__TARGET__.currentCameraControls.enable();
+                    this.__TARGET__.controls.drag.enable(true);
+                }
             }
             //console.log(event.value)
             //this.__TARGET__.cache.controls.orbit.enabled = ! event.value;
@@ -44,7 +54,11 @@ class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
 }
 
 const ZikoTransformControls=target=>new ZikoThreeTransformControls(target);
-const useTransformControls=(child,mode)=>new ZikoThreeTransformControls(child.parent).attach(child).setMode(mode);
+const useTransformControls=(child,mode)=>{
+    if(child instanceof ZikoThreeObject3D)return new ZikoThreeTransformControls(child.parent).attach(child).setMode(mode);
+    return new ZikoThreeTransformControls(child).setMode(mode)
+    
+}
 export {
     ZikoTransformControls,
     useTransformControls

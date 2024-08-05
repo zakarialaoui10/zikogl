@@ -9,13 +9,13 @@ class __ZikoThreeControls__{
     get currentState(){
         return null
     }
-    enable(restore=true){
+    enable(restore){
         if(restore)this.restore();
         this.control.enabled=true;
         return this;
     }
-    disable(){
-        this.save()
+    disable(save){
+        if(save)this.save();
         this.control.enabled=false;
         return this;
     }
