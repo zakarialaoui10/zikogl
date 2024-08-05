@@ -10,12 +10,16 @@ class __ZikoThreeGeoMatBased__ extends ZikoThreeObject3D{
         }
     }
     clone(){
-        const OBJECT = new this.constructor();
-        OBJECT.__proto__=this.__proto__;
-        OBJECT.element=new this.element.constructor();
-        OBJECT.element.geometry=new this.element.geometry.constructor();
-        OBJECT.element.material=new this.element.material.constructor(this.cache.materialAttributes);
-        return OBJECT
+        const Geometry = this.geometry;
+        const Material = this.material;
+        const OBJECT = new this.constructor(Geometry,Material);
+        // OBJECT.__proto__=this.__proto__;
+        // OBJECT.element=new this.element.constructor();
+        // OBJECT.element.geometry=new this.element.geometry.constructor();
+        // OBJECT.element.material=new this.element.material.constructor();
+        // OBJECT.style(this.cache.materialAttributes);
+        OBJECT.element.applyMatrix4(this.element.matrix);
+        return OBJECT;
     }
     get isHovered(){
     }
@@ -43,7 +47,9 @@ class __ZikoThreeGeoMatBased__ extends ZikoThreeObject3D{
                // default : this.element.material[key]=materialAttr[key];
             }
             this.element.material[key]=value;
-            Object.assign(this.cache.materialAttributes,{[key]:value})
+            // console.log({[key]:value})
+            this.cache.materialAttributes[key]=value;
+            // Object.assign(this.cache.materialAttributes,{[key]:value})
         }
         if(render && this.parent)this.parent.renderGl(); // IF parent type is Gl
         return this;

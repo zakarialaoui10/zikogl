@@ -2,19 +2,20 @@ __Ziko__.ExtractAll()
 __ZikoGl__.ExtractAll()
 __Ziko__.__Config__.setDefault({target:document.body})
 
-SCENE = SceneGl("100vw","100vh");
-// obj=[]
-// for(i=-2;i<=2;i++){
-// 	for(j=-2;j<=2;j++){
-// 		for(k=-2;k<=2;k++){
-// 			obj.push(cube3(0.3).pos(i*4.5,j*4.5,3*k))
-// 		}
-// 	}
-// }
-// SCENE.add(...obj);
+SCENE = SceneGl("100vw","50vh");
+obj=[]
+for(i=-2;i<=2;i++){
+	for(j=-2;j<=2;j++){
+		for(k=-2;k<=2;k++){
+			obj.push(cube3(0.3).pos(i*4.5,j*4.5,3*k).style({color:0xff0000}))
+		}
+	}
+}
+SCENE.add(...obj);
 c=cube3(1).style({color:0xaaaa00})
-b=c.clone()
+// b=c.clone()
 // SCENE.add(b)
+SCENE2 = SCENE.clone("100vw","50vh")
 
 // dragCtrl = useDragControls(obj);
 // transformCtrl = useTransformControls(SCENE);

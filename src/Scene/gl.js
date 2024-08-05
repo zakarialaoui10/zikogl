@@ -74,6 +74,13 @@ class ZikoThreeSceneGl extends ZikoUIElement{
     get currentCameraControls(){
         return this.cache.currentCameraControls;
     }
+    clone(WIDTH="100px",HEIGHT="100px"){
+        const SCENE = new this.constructor(WIDTH,HEIGHT);
+        SCENE.__proto__=this.__proto__;
+        const items=this.items.map(n=>n.clone())
+        SCENE.add(...items);
+        return SCENE
+    }
     maintain(){
         this.camera.currentCamera.aspect=(this.element.clientWidth)/(this.element.clientHeight); 
         this.camera.currentCamera.updateProjectionMatrix();
@@ -142,9 +149,6 @@ class ZikoThreeSceneGl extends ZikoUIElement{
             this.renderGl();
         })
         return this;
-    }
-    clone(){
-
     }
     background(texture){
         if(typeof texture === "string"){
