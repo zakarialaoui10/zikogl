@@ -9,7 +9,10 @@ class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
         this.__TARGET__.sceneGl.add(this.control);
         this.isPaused=false;
         this.mode="translate";
-        this.onChange()
+        this.onChange();
+        Object.assign(this.__cache__,{
+            savedStates : []
+        })
     }
     add(){
         this.__TARGET__.sceneGl.add(this.control);
@@ -36,9 +39,6 @@ class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
                     this.__TARGET__.controls.drag.enable(true);
                 }
             }
-            //console.log(event.value)
-            //this.__TARGET__.cache.controls.orbit.enabled = ! event.value;
-            //console.log(this.__TARGET__.cache.controls.orbit.enabled )
         })
         return this;
     }
@@ -50,6 +50,28 @@ class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
         if(obj instanceof ZikoThreeLightHelper)this.control.attach(obj.attached_light);
         else this.control.attach(obj.element);
         return this;
+    }
+    save() {
+        const object = this.control.object;
+        if (object) {
+            this.__cache__.savedStates.push({
+                id: object.id,
+                position: object.position.clone(),
+                rotation: object.rotation.clone(),
+                scale: object.scale.clone()
+            });
+        }
+    }
+    restore() {
+        const object = this.control.object;
+        if (object) {
+            const savedState = this.__cache__.savedStates.find(state => state.id === object.id);
+            if (savedState) {
+                object.position.copy(savedState.position);
+                object.rotation.copy(savedState.rotation);
+                object.scale.copy(savedState.scale);
+            }
+        }
     }
 }
 
