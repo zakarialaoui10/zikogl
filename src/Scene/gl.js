@@ -60,14 +60,19 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         this.render();
         this.size(w,h);
         this.watchSize(()=>this.maintain())
-        this.useOrbitControls()
-        waitElm(this.element.element).then(()=>{
-            this.useOrbitControls()
-        })
+        // this.useOrbitControls();
+        // this.sceneGl.addEventListener("rerender",()=>this.renderGl())
+        // waitElm(this.element.element).then(()=>{
+        //     this.useOrbitControls()
+        // })
         this.style({
             margin:0
         })
-            
+        globalThis.addEventListener("DOMContentLoaded", () => {
+            this.renderGl();
+            if(this.type==="css")this.renderCss();
+            this.useOrbitControls()
+        });
     }
     get controls(){
         return this.cache.controls;
@@ -123,6 +128,8 @@ class ZikoThreeSceneGl extends ZikoUIElement{
 			}
 			else this.sceneGl.add(obj[i])
 		});
+        // this.sceneGl.dispatchEvent({ type: 'rerender', message: 'This is a custom event!' })
+        // this.emit("rerender");
         this.maintain();
 		return this;
 	}

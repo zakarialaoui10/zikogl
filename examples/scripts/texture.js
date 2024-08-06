@@ -9,11 +9,12 @@ im2=image("ziko.png")
 im2.st.hide()
 t1=useTexture(im1)
 t2=useTexture(im2)
-obj1 = cube3(3).posX(-2).style({
+obj1 = cylindre3(2,2,2).posX(-2).style({
+    side:2,
     map:t2,
     displacementMap:t2,
-    displacementScale: 0.5,
-    displacementBias: 0.5,
+    displacementScale: 0,
+    displacementBias: 0,
     // emissive:0xffffff,
     // metalness:1.0,
 })
@@ -24,3 +25,5 @@ obj1.useMeshPhysicalMaterial()
 SCENE.add(obj1,obj2)
 l=useAmbientLight(0xffffff,1)
 SCENE.add(l)
+
+addEventListener("DOMContentLoaded", () => SCENE.renderGl());

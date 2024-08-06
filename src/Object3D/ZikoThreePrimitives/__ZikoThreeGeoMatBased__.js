@@ -47,6 +47,7 @@ class __ZikoThreeGeoMatBased__ extends ZikoThreeObject3D{
             this.cache.materialAttributes[key]=value;
             // Object.assign(this.cache.materialAttributes,{[key]:value})
         }
+        console.log(this.parent)
         if(render && this.parent)this.parent.renderGl(); // IF parent type is Gl
         return this;
     }  
