@@ -15,11 +15,20 @@ class ZikoThreeLight extends ZikoThreeObject3D {
     get type(){
         return "light";
     }
+    clone(){
+        const OBJECT = new this.constructor();
+        OBJECT.__proto__=this.__proto__;
+        OBJECT.element=new this.element.constructor(...this.cache.args);
+        return OBJECT
+    }
 }
 
 class ZikoThreeAmbientLight extends ZikoThreeLight {
     constructor(color = 0xffffff, intensity = 1) {
         super();
+        Object.assign(this.cache,{
+            args:[color,intensity]
+        })
         this.element = new AmbientLight(color, intensity);
     }
 }
@@ -27,6 +36,9 @@ class ZikoThreeAmbientLight extends ZikoThreeLight {
 class ZikoThreeDirectionalLight extends ZikoThreeLight {
     constructor(color = 0xffffff, intensity = 1) {
         super();
+        Object.assign(this.cache,{
+            args:[color,intensity]
+        })
         this.element = new DirectionalLight(color, intensity);
     }
 }
@@ -41,6 +53,9 @@ class ZikoThreeHemisphereLight extends ZikoThreeLight {
 class ZikoThreePointLight extends ZikoThreeLight {
     constructor(color = 0xffffff, intensity = 1, distance = 0, decay = 1) {
         super();
+        Object.assign(this.cache,{
+            args:[color,intensit,distance,decay]
+        })
         this.element = new PointLight(color, intensity, distance, decay);
     }
 }
@@ -48,6 +63,9 @@ class ZikoThreePointLight extends ZikoThreeLight {
 class ZikoThreeRectAreaLight extends ZikoThreeLight {
     constructor(color = 0xffffff, intensity = 1, width = 10, height = 10) {
         super();
+        Object.assign(this.cache,{
+            args:[color,intensity,width,height]
+        })
         this.element = new RectAreaLight(color, intensity, width, height);
     }
 }
@@ -55,6 +73,9 @@ class ZikoThreeRectAreaLight extends ZikoThreeLight {
 class ZikoThreeSpotLight extends ZikoThreeLight {
     constructor(color = 0xffffff, intensity = 1, distance = 0, angle = Math.PI / 3, penumbra = 0, decay = 1) {
         super();
+        Object.assign(this.cache,{
+            args:[color,intensity,distance,angle,penumbra,decay]
+        })
         this.element = new SpotLight(color, intensity, distance, angle, penumbra, decay);
     }
 }

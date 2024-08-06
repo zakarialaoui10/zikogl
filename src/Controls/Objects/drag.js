@@ -29,6 +29,7 @@ class ZikoThreeDragControls extends __ZikoThreeObjectControls__{
     }
     onDrag(callback){
         this.control.addEventListener("drag",(e)=>{
+            console.log(e)
            if(callback) callback.call(this,this);
         })
         return this;
@@ -63,6 +64,7 @@ class ZikoThreeDragControls extends __ZikoThreeObjectControls__{
                 scale: n.element.scale.clone()
             };
         });
+        return this;
     }
 
     restore() {
@@ -75,10 +77,10 @@ class ZikoThreeDragControls extends __ZikoThreeObjectControls__{
             }
         });
         if(this.__TARGET__.type==="css")this.__TARGET__.renderCss()
-        this.__TARGET__.renderGl()
+        this.__TARGET__.renderGl();
+    return this;
     }
 }
-
 const ZikoDragControls = (target,objects) => new ZikoThreeDragControls(target,objects)
 const useDragControls = (objects)=>{
     const SCENE = objects[0].parent;

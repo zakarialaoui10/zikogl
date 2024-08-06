@@ -1,27 +1,9 @@
-__Ziko__.ExtractAll()
-__ZikoGl__.ExtractAll()
-__Ziko__.__Config__.setDefault({target:document.body})
-
-SCENE = SceneGl("100vw","50vh");
-// obj=[]
-// for(i=-2;i<=2;i++){
-// 	for(j=-2;j<=2;j++){
-// 		for(k=-2;k<=2;k++){
-// 			obj.push(cube3(0.3).pos(i*4.5,j*4.5,3*k).style({color:0xff0000}))
-// 		}
-// 	}
-// }
-// SCENE.add(...obj);
-c=cube3(1).style({color:0xaaaa00})
-// b=c.clone()
-// SCENE.add(b)
-SCENE2 = SCENE.clone("100vw","50vh")
-
-// dragCtrl = useDragControls(obj);
-// transformCtrl = useTransformControls(SCENE);
-// dragCtrl.onHoverOn(e=>transformCtrl.attach(e.element));
-// dragCtrl.onStart(()=>transformCtrl.setMode("rotate"))
-
+// dragCtrl.onStart((e)=>{
+// 	console.log(e)
+// 	// dragCtrl.disable()
+// 	// transformCtrl.setMode("rotate")
+// })
+// dragCtrl.onEnd(()=>console.log("end"))
 // function dumpObject(obj, lines = [], isLast = true, prefix = '') {
 // 	const localPrefix = isLast ? '└─' : '├─';
 // 	lines.push(`${prefix}${prefix ? localPrefix : ''}${obj.name || '*no-name*'} [${obj.type}]`);
@@ -44,3 +26,8 @@ SCENE2 = SCENE.clone("100vw","50vh")
 // //     SCENE.sceneGl.add(root);
 // //   });
 // a=JSON.parse(preload("https://threejs.org/manual/examples/resources/models/cartoon_lowpoly_small_city_free_pack/scene.gltf"))
+
+// a=useDirectionalLight(0xff0000,1)
+// b=useLightHelper(a);
+// SCENE.add(b)
+// SCENE2.add(a.clone())

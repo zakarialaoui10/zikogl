@@ -23,6 +23,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
     constructor(w,h){
         super("figure","figure")
         Object.assign(this.cache,{
+            args:[w,h],
             type:"gl",
             currentCameraControls:null,
             controls:{
@@ -74,8 +75,8 @@ class ZikoThreeSceneGl extends ZikoUIElement{
     get currentCameraControls(){
         return this.cache.currentCameraControls;
     }
-    clone(WIDTH="100px",HEIGHT="100px"){
-        const SCENE = new this.constructor(WIDTH,HEIGHT);
+    clone(){
+        const SCENE = new this.constructor(...this.cache.args);
         SCENE.__proto__=this.__proto__;
         const items=this.items.map(n=>n.clone())
         SCENE.add(...items);

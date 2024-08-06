@@ -75,7 +75,9 @@ class ZikoThreeBoxHelper extends ZikoThreeHelper{
         })
         this.element=new BoxHelper(ZikoGlObject.element,color);
     }
-    // Checl Clone
+    clone(){
+        return this
+    }
 }
 class ZikoThreeBox3Helper extends ZikoThreeHelper{
     constructor(V0,V1,color){
@@ -113,7 +115,9 @@ class ZikoThreeLightHelper extends ZikoThreeHelper{
             case "PointLight":this.element=new PointLightHelper(ZikoLight.element,size,color);break;
         }
     }
-    // Check Clone
+    clone(){
+        return this
+    }
 }
 const useAxesHelper=(size)=>new ZikoThreeAxesHelper(size);
 const useGridHelper=(N,M,color1,color2)=>new ZikoThreeGridHelper(N,M,color1,color2);

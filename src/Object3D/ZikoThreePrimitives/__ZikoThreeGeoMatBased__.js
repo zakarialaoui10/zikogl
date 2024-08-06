@@ -13,15 +13,9 @@ class __ZikoThreeGeoMatBased__ extends ZikoThreeObject3D{
         const Geometry = this.geometry;
         const Material = this.material;
         const OBJECT = new this.constructor(Geometry,Material);
-        // OBJECT.__proto__=this.__proto__;
-        // OBJECT.element=new this.element.constructor();
-        // OBJECT.element.geometry=new this.element.geometry.constructor();
-        // OBJECT.element.material=new this.element.material.constructor();
         // OBJECT.style(this.cache.materialAttributes);
         OBJECT.element.applyMatrix4(this.element.matrix);
         return OBJECT;
-    }
-    get isHovered(){
     }
     get geometry(){
         return this.element.geometry;
@@ -33,17 +27,19 @@ class __ZikoThreeGeoMatBased__ extends ZikoThreeObject3D{
         for(let key in materialAttr){
             let value = materialAttr[key];
             switch(key){
-                case "color" : value = new Color(value);break;
+                case "color" :
+                case "emissive" : 
+                case "sheen" : 
+                case "attenuationColor" : value = new Color(value);break;
                 case "map": // IT USES THE NEXT LOGIC 
-                case "texture": {
-                    if(["number","string"].includes(typeof value)) this.element.material.color=new Color(value);
-                    if(value instanceof Color) this.element.material.color=value;
-                    if(isValidTexture(value)) {
-                        this.element.material.needsUpdate=true;
-                        value = useTexture(value);
-                        key = "map";
-                    }
-                } ; break;
+                case "texture": [key,value]=mapTexture.call(this,"map",value) ; break;
+                case "emissiveMap": [key,value]=mapTexture.call(this,"emissiveMap",value) ; break;
+                case "alphaMap": [key,value]=mapTexture.call(this,"alphaMap",value) ; break;
+                case "specularMap": [key,value]=mapTexture.call(this,"specularMap",value) ; break;
+                case "normalMap": [key,value]=mapTexture.call(this,"normalMap",value) ; break;
+                case "lightMap": [key,value]=mapTexture.call(this,"lightMap",value) ; break;
+                case "bumpMap": [key,value]=mapTexture.call(this,"bumpMap",value) ; break;
+                case "displacementMap": [key,value]=mapTexture.call(this,"displacementMap",value) ; break;
                // default : this.element.material[key]=materialAttr[key];
             }
             this.element.material[key]=value;
@@ -58,6 +54,16 @@ class __ZikoThreeGeoMatBased__ extends ZikoThreeObject3D{
         return{
             color:(color,render=true)=>this.style({color},render),
             texture:(texture,render=true)=>this.style({texture},render),
+            emmisive:(texture,color,intensity,render)=>this.style({
+                emmisiveMap:texture,
+                emmisive:new Color(color),
+                emissiveIntensity:intensity
+            },render),
+            displacementMap:(texture,scale,bias)=>this.style({
+                displacementMap:texture,
+                displacementScale:scale,
+                displacementBias:bias,
+            }),
             side:null,
             transparent:null,
             opacity:null,
@@ -65,7 +71,15 @@ class __ZikoThreeGeoMatBased__ extends ZikoThreeObject3D{
         }
     }
 }
-
+function mapTexture(__key,value){
+        if(["number","string"].includes(typeof value)) this.element.material.color=new Color(value);
+        if(value instanceof Color) this.element.material.color=value;
+        if(isValidTexture(value)) {
+            this.element.material.needsUpdate=true;
+            value = useTexture(value);
+        }
+        return[__key,value]
+}
 export{
     __ZikoThreeGeoMatBased__
 }
