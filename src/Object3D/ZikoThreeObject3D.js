@@ -145,6 +145,19 @@ class ZikoThreeObject3D{
         this.maintain(render);
         return this;
     }
+    useShadow(receiveShadow=true,castShadow=true){
+        this.element.receiveShadow=receiveShadow;
+        this.element.castShadow=castShadow;
+        return this;
+    }
+    castShadow(castShadow=true){
+        this.element.castShadow=castShadow;
+        return this;
+    }
+    receiveShadow(receiveShadow=true){
+        this.element.receiveShadow=receiveShadow;
+        return this;
+    }
 }
 export {
     ZikoThreeObject3D,

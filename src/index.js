@@ -54,6 +54,7 @@ import{
     svg3,
     extrude3,
     ui3,
+    htmlMesh,
     text3,
     text2
 } from "./Object3D/index.js";
@@ -64,6 +65,7 @@ import {
 const ZikoGl={
     THREE,
     ui3,
+    htmlMesh,
     text3,
     text2,
     loadSVG,

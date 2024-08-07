@@ -3,7 +3,10 @@ import {
     TextureLoader,
     CanvasTexture,
     VideoTexture
- } from "three";
+} from "three";
+import {
+    LottieLoader
+} from "three/examples/jsm/Addons.js";
 import { 
     ZikoUICanvas,
     ZikoUIImage,

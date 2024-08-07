@@ -21,6 +21,18 @@ class ZikoThreeLight extends ZikoThreeObject3D {
         OBJECT.element=new this.element.constructor(...this.cache.args);
         return OBJECT
     }
+    disableShadow(){
+        this.element.castShadow = true;
+        return this;
+    }
+    useShadow(width=512,height=512,bias=0,blur=4){
+        this.element.castShadow = true;
+        this.element.shadow.mapSize.width = width;
+        this.element.shadow.mapSize.height = height;
+        this.element.shadow.bias = bias; 
+        this.element.shadow.blur = blur; 
+        return this;
+    }
 }
 
 class ZikoThreeAmbientLight extends ZikoThreeLight {

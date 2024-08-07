@@ -26,6 +26,7 @@ export {
 export {
     ui3
 } from "./ZikoThreeCss/index.js";
+export { htmlMesh } from "./ZikoThreeHTMLMesh/index.js";
 export {
     useAxesHelper,
     useGridHelper,

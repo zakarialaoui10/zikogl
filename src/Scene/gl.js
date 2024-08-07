@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { PCFSoftShadowMap } from "three";
 import {
     ZikoUIElement,
 } from "ziko"
@@ -232,6 +233,11 @@ class ZikoThreeSceneGl extends ZikoUIElement{
     }
     fog(color,near,far){
 
+    }
+    useShadow(enabled=true,type=PCFSoftShadowMap){
+        this.rendererGl.shadowMap.enabled = enabled;
+        this.rendererGl.shadowMap.type = PCFSoftShadowMap;
+        return this;
     }
     toImage(){
 
