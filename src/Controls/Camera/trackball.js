@@ -28,5 +28,4 @@ class ZikoThreeTrackballControls extends __ZikoThreeCameraControls__{
 }
 
 const ZikoTrackballControls = target => new ZikoThreeTrackballControls(target);
-window.track = ZikoTrackballControls
 export { ZikoTrackballControls }

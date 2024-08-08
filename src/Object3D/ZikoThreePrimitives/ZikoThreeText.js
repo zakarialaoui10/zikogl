@@ -2,7 +2,6 @@ import {
     TextGeometry,
     FontLoader,
  } from "three/examples/jsm/Addons.js";
-import { ZikoThreeObject3D } from "../ZikoThreeObject3D.js";
 import { Mesh,MeshBasicMaterial,ShapeGeometry } from "three";
 import {fontData} from "./Fonts/helvetiker_regular.js"
 import { __ZikoThreeGeoMatBased__ } from "./__ZikoThreeGeoMatBased__.js";
