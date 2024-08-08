@@ -1,0 +1,11 @@
+// ptrCtrl.onHoverOn(()=>console.log("Hover On"))
+// ptrCtrl.onHoverOff(()=>console.log("Hover Off"))
+// ptrCtrl.onUp(()=>console.log("Pointer Up"))
+
+// t1=text3("translate",0.3,0.1).pos(0,1,0)
+// t2=text3("rotate",0.3,0.1).pos(0,0,0)
+// t3=text3("scale",0.3,0.1).pos(0,-1,0)
+// // mode = groupe3(t1,t2,t3).pos(-2,0,0)
+// SCENE.add(t1,t2,t3);
+// transformMode = usePtrCtrl([t1,t2,t3])
+// transformMode.onClick(e=>transformCtrl.setMode(e.element.text));

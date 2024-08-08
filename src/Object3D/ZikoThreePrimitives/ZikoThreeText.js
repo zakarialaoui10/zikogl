@@ -9,8 +9,9 @@ import { __ZikoThreeGeoMatBased__ } from "./__ZikoThreeGeoMatBased__.js";
 const loader = new FontLoader();
 const font = loader.parse(fontData); 
 class ZikoThreeText extends __ZikoThreeGeoMatBased__{
-    constructor(){
+    constructor(text){
         super()
+        this.text = text;
     }
     get type(){
         return "text";
@@ -18,7 +19,7 @@ class ZikoThreeText extends __ZikoThreeGeoMatBased__{
 }
 class ZikoThreeText3D extends ZikoThreeText{
     constructor(text,size=1,height=1){
-        super();
+        super(text);
         const geometry = new TextGeometry(text, {
                 font,
                 size,
@@ -38,7 +39,7 @@ class ZikoThreeText3D extends ZikoThreeText{
 }
 class ZikoThreeText2D extends ZikoThreeText{
     constructor(text,size=1){
-        super();
+        super(text);
         const shapes = font.generateShapes( text, size );
 	    const geometry = new ShapeGeometry( shapes );
         const material = new MeshBasicMaterial({ /* color: 0x00ff00 */ });

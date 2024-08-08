@@ -44,6 +44,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
                 arcball:null,
                 transform:null,
                 drag:null,
+                ptr:null
             },
             // watch:{
             //     intersection:{

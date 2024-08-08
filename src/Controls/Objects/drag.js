@@ -29,7 +29,6 @@ class ZikoThreeDragControls extends __ZikoThreeObjectControls__{
     }
     onDrag(callback){
         this.control.addEventListener("drag",(e)=>{
-            console.log(e)
            if(callback) callback.call(this,this);
         })
         return this;
@@ -82,7 +81,7 @@ class ZikoThreeDragControls extends __ZikoThreeObjectControls__{
     }
 }
 const ZikoDragControls = (target,objects) => new ZikoThreeDragControls(target,objects)
-const useDragControls = (objects)=>{
+const useDragCtrl = (objects)=>{
     const SCENE = objects[0].parent;
     const CTRL = ZikoDragControls(SCENE,objects);
     SCENE.cache.controls.drag = CTRL;
@@ -90,5 +89,5 @@ const useDragControls = (objects)=>{
 }
 export {
     ZikoDragControls,
-    useDragControls
+    useDragCtrl
 }

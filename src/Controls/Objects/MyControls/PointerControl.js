@@ -22,7 +22,7 @@ class PointerControls extends EventDispatcher {
         this.objects = objects;
         this.camera = camera;
         this.domElement = domElement;
-        this.domElement.style.touchAction = 'none'; // disable touch scroll
+        this.domElement.style.touchAction = 'none'; 
         this.enabled = true;
         this.recursive = true;
         this.transformGroup = false;

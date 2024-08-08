@@ -20,8 +20,8 @@ for(i=-2;i<=2;i++){
 }
 SCENE.add(...obj);
 
-dragCtrl = useDragControls(obj);
-transformCtrl = useTransformControls(SCENE,"rotate");
+dragCtrl = useDragCtrl(obj);
+transformCtrl = useTransformCtrl(SCENE,"rotate");
 dragCtrl.onStart(e=>transformCtrl.attach(e.element));
 
 h4("Camera Controls")

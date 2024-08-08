@@ -42,12 +42,16 @@ class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
         return this;
     }
     setMode(mode=this.mode){
-        this.control.setMode(mode);
+        this.control.setMode(mode.toLowerCase());
         return this;
     }
     attach(obj){
         if(obj instanceof ZikoThreeLightHelper)this.control.attach(obj.attached_light);
         else this.control.attach(obj.element);
+        return this;
+    }
+    detach(){
+        this.control.detach();
         return this;
     }
     save() {
@@ -79,12 +83,12 @@ class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
 }
 
 const ZikoTransformControls=target=>new ZikoThreeTransformControls(target);
-const useTransformControls=(child,mode)=>{
+const useTransformCtrl=(child,mode)=>{
     if(child instanceof ZikoThreeObject3D)return new ZikoThreeTransformControls(child.parent).attach(child).setMode(mode);
     return new ZikoThreeTransformControls(child).setMode(mode)
     
 }
 export {
     ZikoTransformControls,
-    useTransformControls
+    useTransformCtrl
 }

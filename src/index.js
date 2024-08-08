@@ -57,9 +57,9 @@ import{
     text2
 } from "./Object3D/index.js";
 import { 
-    useDragControls,
-    usePointerControls,
-    useTransformControls
+    useDragCtrl,
+    usePtrCtrl,
+    useTransformCtrl
  } from "./Controls";
 const ZikoGl={
     THREE,
@@ -103,9 +103,9 @@ const ZikoGl={
     usePointLight,
     useRectAreaLight,
     useSpotLight,
-    useTransformControls,
-    useDragControls,
-    usePointerControls,
+    useTransformCtrl,
+    useDragCtrl,
+    usePtrCtrl,
     useCoordinates,
     useEdges,
     useWireframe,

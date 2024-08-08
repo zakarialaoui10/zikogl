@@ -22,7 +22,8 @@ class ZikoThreeGroupe extends ZikoThreeObject3D{
 				obj[i]=new ZikoThreeMesh(obj);
 			}
 			this.element.add(obj[i].element);
-			this.items.push(obj[i])
+			this.items.push(obj[i]);
+			obj[i].parent=this;
 		}
        return this;
 	}
