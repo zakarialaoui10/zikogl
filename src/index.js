@@ -25,8 +25,6 @@ import{
     useLightHelper
 } from "./Object3D/ZikoThreeHelper/index.js"
 import { 
-    useFog,
-    useFogExp2,
     useCoordinates,
     useTexture,
     useEdges,
@@ -60,6 +58,7 @@ import{
 } from "./Object3D/index.js";
 import { 
     useDragControls,
+    usePointerControls,
     useTransformControls
  } from "./Controls";
 const ZikoGl={
@@ -106,8 +105,7 @@ const ZikoGl={
     useSpotLight,
     useTransformControls,
     useDragControls,
-    useFog,
-    useFogExp2,
+    usePointerControls,
     useCoordinates,
     useEdges,
     useWireframe,

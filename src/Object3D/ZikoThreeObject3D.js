@@ -54,24 +54,6 @@ class ZikoThreeObject3D{
     get rz(){
         return this.element.rotation.z;
     }
-    get x(){
-        return {
-            pos:this.px,
-            rot:this.rx
-        }
-    }
-    get y(){
-        return {
-            pos:this.py,
-            rot:this.ry
-        }
-    }
-    get z(){
-        return {
-            pos:this.pz,
-            rot:this.rz
-        }
-    }
     posX(x=this.px,render=true){
         this.element.position.x=x;
         this.maintain(render);

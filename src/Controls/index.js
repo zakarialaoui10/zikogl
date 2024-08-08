@@ -7,5 +7,6 @@ export { ZikoFirstPersonControls } from "./Camera/firstPerson.js";
 export { ZikoPointerLockControls } from "./Camera/pointerLock.js";
 export * from "./Objects/transform";
 export * from "./Objects/drag";
+export * from "./Objects/pointer.js"
 
 
