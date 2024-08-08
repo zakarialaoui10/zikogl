@@ -1,5 +1,11 @@
-import * as THREE from "three";
-import { PCFSoftShadowMap } from "three";
+import {
+    WebGLRenderer, 
+    Scene,
+    Color,
+    PCFSoftShadowMap,
+    Vector2,
+    Raycaster
+ } from "three";
 import {
     ZikoUIElement,
 } from "ziko"
@@ -41,8 +47,8 @@ class ZikoThreeSceneGl extends ZikoUIElement{
             watch:{
                 intersection:{
                     enabled:true,
-                    pointer:new THREE.Vector2(),
-                    raycaster:new THREE.Raycaster(),
+                    pointer:new Vector2(),
+                    raycaster:new Raycaster(),
                     INTERSECTED:null,
                     onStartIntersectionCallback:()=>{},
                     onEndIntersectionCallback:()=>{}
@@ -50,13 +56,13 @@ class ZikoThreeSceneGl extends ZikoUIElement{
             }
         })
         this.canvas=Ziko.UI.html("canvas").render(true,this.element)
-        this.rendererGl=new THREE.WebGLRenderer({canvas:this.canvas.element});
+        this.rendererGl=new WebGLRenderer({canvas:this.canvas.element});
         this.rendererTarget=this.rendererGl;
-		this.sceneGl=new THREE.Scene();
+		this.sceneGl=new Scene();
         this.camera=ZikoCamera(w,h,0.1,1000);
         this.camera.currentCamera.position.z=10;
         this.camera.parent=this;
-        this.sceneGl.background=new THREE.Color("#3333ee");
+        this.sceneGl.background=new Color("#3333ee");
         this.renderGl()
         this.render();
         this.size(w,h);
@@ -80,6 +86,24 @@ class ZikoThreeSceneGl extends ZikoUIElement{
     }
     get currentCameraControls(){
         return this.cache.currentCameraControls;
+    }
+    get px(){
+        return this.sceneGl.position.x;
+    }
+    get py(){
+        return this.sceneGl.position.y;
+    }
+    get pz(){
+        return this.sceneGl.position.z;
+    }
+    get rx(){
+        return this.sceneGl.rotation.x;
+    }
+    get ry(){
+        return this.sceneGl.rotation.y;
+    }
+    get rz(){
+        return this.sceneGl.rotation.z;
     }
     clone(){
         const SCENE = new this.constructor(...this.cache.args);
@@ -160,83 +184,87 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         return this;
     }
     background(texture){
-        if(typeof texture === "string"){
-            if((texture.length===7||texture.length===4)&&texture[0]==="#")this.sceneGl.background=new THREE.Color(texture);
+        if(["string","number"].includes(typeof texture)){
+            if((texture.length===7||texture.length===4)&&texture[0]==="#")this.sceneGl.background=new Color(texture);
         }
         if(isValidTexture(texture))this.sceneGl.background=useTexture(texture);
         this.renderGl();
         return this;
     }
-    posX(x=this.POSX){
+    posX(x=this.px,render=true){
         this.sceneGl.position.x=x;
-        this.renderGl();
+        if(render)this.renderGl();
         return this;
     }
-    posY(y=this.POSY){
+    posY(y=this.py,render=true){
         this.sceneGl.position.y=y;
-        this.renderGl();
+        if(render)this.renderGl();
         return this;
     }
-    posZ(z=this.POSZ){
+    posZ(z=this.pz,render=true){
         this.sceneGl.position.z=z;
-        this.renderGl();
+        if(render)this.renderGl();
         return this;
     }
-    pos(x,y,z){
-        this.sceneGl.rotation.set(x,y,z);
-        this.renderGl();
+    pos(x,y,z,render=true){
+        this.sceneGl.position.set(x,y,z);
+        if(render)this.renderGl();
         return this;
     }
-    tarnslateX(dx=0){
-        this.sceneGl.position.x=this.POSX+dx;
-        this.renderGl();
+    tarnslateX(dx=0,render=true){
+        this.sceneGl.position.x=this.px+dx;
+        if(render)this.renderGl();
         return this;
     }
-    translateY(dy=0){
-        this.sceneGl.position.y=this.POSY+dy;
-        this.renderGl();
+    translateY(dy=0,render=true){
+        this.sceneGl.position.y=this.py+dy;
+        if(render)this.renderGl();
         return this;
     }
-    translateZ(dz=0){
-        this.sceneGl.position.z=this.POSZ+dz;
-        this.renderGl();
+    translateZ(dz=0,render=true){
+        this.sceneGl.position.z=this.pz+dz;
+        if(render)this.renderGl();
         return this;
     }
-    translate(dx=0,dy=0,dz=0){
+    translate(dx=0,dy=0,dz=0,render=true){
         this.sceneGl.rotation.set(
-            this.POSX+dx,
-            this.POSY+dy,
-            this.POSZ+dz,
+            this.px+dx,
+            this.py+dy,
+            this.pz+dz,
             );
-        this.renderGl();
+        if(render)this.renderGl();
         return this;
     }
-    rotX(x=this.ROTX){
+    rotX(x=this.rx,render=true){
         this.sceneGl.rotation.x=x;
-        this.renderGl();
+        if(render)this.renderGl();
         return this;
     }
-    rotY(y=this.ROTY){
+    rotY(y=this.ry,render=true){
         this.sceneGl.rotation.y=y;
-        this.renderGl();
+        if(render)this.renderGl();
         return this;            
     }
-    rotZ(z=this.ROTZ){
+    rotZ(z=this.rz,render=true){
         this.sceneGl.rotation.z=z;
-        this.renderGl();
+        if(render)this.renderGl();
         return this;            
     }
     rot(x,y,z){
         this.sceneGl.rotation.set(x,y,z);
-        this.renderGl();
+        if(render)this.renderGl();
         return this;
     }
-    fog(color,near,far){
+    useFog(color,near,far){
 
     }
-    useShadow(enabled=true,type=PCFSoftShadowMap){
-        this.rendererGl.shadowMap.enabled = enabled;
-        this.rendererGl.shadowMap.type = PCFSoftShadowMap;
+    useShadow(type=PCFSoftShadowMap){
+        this.rendererGl.shadowMap.enabled = true;
+        this.rendererGl.shadowMap.type = type;
+        return this;
+    }
+    disableShadow(){
+        this.rendererGl.shadowMap.enabled = false;
         return this;
     }
     toImage(){
@@ -301,10 +329,6 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         this.cache.currentCameraControls=this.cache.controls.firstPerson;
         return this;
     }
-    // useTransformControls(){
-    //     if(!this.cache.controls.transform)this.cache.controls.transform=ZikoTransformControls(this);
-    //     return this;
-    // }
     usePerspectiveCamera(){
         this.camera.usePerspective();
         return this;

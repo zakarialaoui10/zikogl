@@ -170,7 +170,7 @@ class ZikoTHREECamera{
 		this.#restore_for_switch();
 		return this;
 	}
-	get Helper(){
+	get helper(){
 		return new CameraHelper(this.currentCamera)
 	}
 }

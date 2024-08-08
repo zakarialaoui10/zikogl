@@ -2,7 +2,8 @@ class ZikoThreeObject3D{
     constructor(){
         this.parent=null;
         this.cache={
-            type:null
+            type:null,
+            legacyParent:null
         }
     }
     maintain(render){
@@ -12,14 +13,24 @@ class ZikoThreeObject3D{
         }
         return this;
     }
-    // render(){
-    //     this.parent.add(this)
-    //     return this;
-    // }
+    render(){
+        this.cache.legacyParent.add(this);
+        return this;
+    }
     unrender(){
         if(this.parent && this.parent.items.includes(this)){
-            this.parent.remove(this)
+            this.cache.legacyParent=this.parent;
+            this.parent.remove(this);
         }
+        this.parent = null;
+        return this;
+    }
+    emit(eventName,data=this){
+        this.element.dispatchEvent({type:eventName,data});
+        return this;
+    }
+    on(eventName,callback){
+        this.element.addEventListener(eventName,e=>callback.call(e,e.data));
         return this;
     }
     get id(){
