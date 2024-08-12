@@ -1,4 +1,5 @@
-The `SceneGl` element is the root of your `ZikoGl` scene and is an instance of [ZikoUIElement](). It acts as the foundational container for all 3D components in your scene, including objects, lights, and cameras. As a ZikoUIElement, it inherits properties and methods that allow it to interact seamlessly within the `Ziko.js` framework. By adding other elements to the SceneGl, you build up the scene that will be rendered and displayed.
+The `SceneGl` element is the root of your `ZikoGl` scene and is an instance of [ZikoUIElement](). 
+It acts as the foundational container for all 3D components in your scene, including objects, lights, and cameras. As a ZikoUIElement, it inherits properties and methods that allow it to interact seamlessly within the `Ziko.js` framework. By adding other elements to the SceneGl, you build up the scene that will be rendered and displayed.
 
 ## Overview 
 ```js
@@ -29,7 +30,7 @@ You can switch between the two supported camers in `zikogl` using the following 
 
  ## Multiple Camera Controls:
   You can easily switch between different control schemes to suit various interaction needs. When switching controls, the previously active control will be disabled to prevent conflicts. Here’s how you can switch between the available control schemes:
-  
+
   ***`.useOrbitControls()`:*** Initializes the scene with OrbitControls by default, enabling the camera to orbit around the scene, zoom in/out, and pan.
 
   ***`.useTrackballControls()`:*** Activates TrackballControls for free-form camera rotation and movement.
