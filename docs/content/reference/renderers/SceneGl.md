@@ -29,6 +29,7 @@ You can switch between the two supported camers in `zikogl` using the following 
 
  ## Multiple Camera Controls:
   You can easily switch between different control schemes to suit various interaction needs. When switching controls, the previously active control will be disabled to prevent conflicts. Here’s how you can switch between the available control schemes:
+  
   ***`.useOrbitControls()`:*** Initializes the scene with OrbitControls by default, enabling the camera to orbit around the scene, zoom in/out, and pan.
 
   ***`.useTrackballControls()`:*** Activates TrackballControls for free-form camera rotation and movement.
@@ -74,7 +75,7 @@ You can switch between the two supported camers in `zikogl` using the following 
  The SceneGl element inherits methods from ZikoUIElement, which allow for effective manipulation and interaction with the elements within the scene. Here’s a closer look at these inherited methods:
 
   ### Object Manipulation 
-  
+
   ***`.forEach( callback )`:*** Iterates over each object in the scene and applies the provided callback function to each one.
 
   ***`.find( callback )`***
