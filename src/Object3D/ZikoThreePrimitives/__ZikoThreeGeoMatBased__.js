@@ -4,10 +4,10 @@ import { isValidTexture, useTexture } from "../../Loaders/texture";
 class __ZikoThreeGeoMatBased__ extends ZikoThreeObject3D{
     constructor(){
         super()
-        this.cache={
+        Object.assign(this.cache,{
             type:"gl",
             materialAttributes:{}
-        }
+        })
     }
     clone(){
         const Geometry = this.geometry;

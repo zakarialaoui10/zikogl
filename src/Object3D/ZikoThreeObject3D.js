@@ -3,7 +3,8 @@ class ZikoThreeObject3D{
         this.parent=null;
         this.cache={
             type:null,
-            legacyParent:null
+            legacyParent:null,
+            attributes:{}
         }
     }
     maintain(render){
@@ -32,6 +33,31 @@ class ZikoThreeObject3D{
     on(eventName,callback){
         this.element.addEventListener(eventName,e=>callback.call(e,e.data));
         return this;
+    }
+    setAttr(name, value) {
+        if(name instanceof Object){
+          const [names,values]=[Object.keys(name),Object.values(name)];
+          for(let i=0;i<names.length;i++){
+            if(this?.attr[name[i]]!==value[i]){
+              Object.assign(this.cache.attributes, Object.fromEntries([[names[i], values[i]]]));
+            }
+          }
+        }
+        else{
+          if(this?.attr[name]!==value){
+            Object.assign(this.cache.attributes, Object.fromEntries([[name, value]]));
+          }
+        }
+        return this;
+    }
+    removeAttr(...names) {
+        for(let i=0;i<names.length;i++){
+            delete this.cache.attributes[names];
+        }
+        return this;
+    }
+    get attr(){
+        return this.cache.attributes;
     }
     get id(){
         return this.element.id

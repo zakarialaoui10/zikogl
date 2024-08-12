@@ -83,12 +83,12 @@ class ZikoThreeTransformControls extends __ZikoThreeObjectControls__{
 }
 
 const ZikoTransformControls=target=>new ZikoThreeTransformControls(target);
-const useTransformCtrl=(child,mode)=>{
+const useTransformControls=(child,mode)=>{
     if(child instanceof ZikoThreeObject3D)return new ZikoThreeTransformControls(child.parent).attach(child).setMode(mode);
     return new ZikoThreeTransformControls(child).setMode(mode)
     
 }
 export {
     ZikoTransformControls,
-    useTransformCtrl
+    useTransformControls
 }

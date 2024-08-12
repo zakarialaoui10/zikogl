@@ -18,8 +18,8 @@ for(i=-2;i<=2;i++){
 }
 SCENE.add(...obj)
 
-ptrCtrl = usePtrCtrl(obj);
-transformCtrl = useTransformCtrl(SCENE);
+ptrCtrl = usePointerControls(obj);
+transformCtrl = useTransformControls(SCENE);
 ptrCtrl.onClick(e=>transformCtrl.attach(e.element));
 
 Mode = Flex(

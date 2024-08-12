@@ -74,7 +74,7 @@ class ZikoThreePointerControls extends __ZikoThreeObjectControls__{
     }
 }
 const ZikoPointerControls = (target,objects) => new ZikoThreePointerControls(target,objects)
-const usePtrCtrl = (objects)=>{
+const usePointerControls = (objects)=>{
     const SCENE = objects[0].parent;
     const CTRL = ZikoPointerControls(SCENE,objects);
     SCENE.cache.controls.drag = CTRL;
@@ -82,5 +82,5 @@ const usePtrCtrl = (objects)=>{
 }
 export {
     ZikoPointerControls,
-    usePtrCtrl
+    usePointerControls
 }

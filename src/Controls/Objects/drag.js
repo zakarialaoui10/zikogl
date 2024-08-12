@@ -81,7 +81,7 @@ class ZikoThreeDragControls extends __ZikoThreeObjectControls__{
     }
 }
 const ZikoDragControls = (target,objects) => new ZikoThreeDragControls(target,objects)
-const useDragCtrl = (objects)=>{
+const useDragControls = (objects)=>{
     const SCENE = objects[0].parent;
     const CTRL = ZikoDragControls(SCENE,objects);
     SCENE.cache.controls.drag = CTRL;
@@ -89,5 +89,5 @@ const useDragCtrl = (objects)=>{
 }
 export {
     ZikoDragControls,
-    useDragCtrl
+    useDragControls
 }

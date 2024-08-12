@@ -45,11 +45,11 @@ ZikoGl includes a variety of control mechanisms to manipulate the camera and obj
  - ***TransformControls:*** 
  ```js
   let mode="translate"; // use can use either "rotate" and scale;
-  ctrl = useTransformCtrl(object);
+  ctrl = useTransformControls(object);
  ```
  - ***DragContros:***
   ```js
-  ctrl = useDragCtrl([objects]);
+  ctrl = useDragControls([objects]);
   ctrL.onStart(callback1)
       .onDrag(callback2)
  ```
