@@ -1,4 +1,4 @@
-import { PointerControls } from './MyControls/PointerControl';
+import { PointerControls } from './MyControls/PointerControls';
 import { __ZikoThreeObjectControls__ } from './__ZikoThreeObjectsControls__';
 class ZikoThreePointerControls extends __ZikoThreeObjectControls__{
     constructor(target,ZikoGlElements) {

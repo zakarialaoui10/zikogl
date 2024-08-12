@@ -55,7 +55,6 @@ class PointerControls extends EventDispatcher {
         this.#updatePointer(event);
         this.#__cache__.raycaster.setFromCamera(this.#__cache__.pointer, this.camera);
         if(!this.#__cache__.selected) {
-            // hover support
             if (event.pointerType === 'mouse' || event.pointerType === 'pen') {
                 this.#__cache__.intersections.length = 0;
                 this.#__cache__.raycaster.setFromCamera(this.#__cache__.pointer, this.camera);

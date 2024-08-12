@@ -45,17 +45,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
                 transform:null,
                 drag:null,
                 ptr:null
-            },
-            // watch:{
-            //     intersection:{
-            //         enabled:true,
-            //         pointer:new Vector2(),
-            //         raycaster:new Raycaster(),
-            //         INTERSECTED:null,
-            //         onStartIntersectionCallback:()=>{},
-            //         onEndIntersectionCallback:()=>{}
-            //     }
-            // }
+            }
         })
         this.canvas=Ziko.UI.html("canvas").render(true,this.element)
         this.rendererGl=new WebGLRenderer({canvas:this.canvas.element});
@@ -69,11 +59,6 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         this.render();
         this.size(w,h);
         this.watchSize(()=>this.maintain())
-        // this.useOrbitControls();
-        // this.sceneGl.addEventListener("rerender",()=>this.renderGl())
-        // waitElm(this.element.element).then(()=>{
-        //     this.useOrbitControls()
-        // })
         this.style({
             margin:0
         })
@@ -125,27 +110,9 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         return this;
     }
     renderGl(){
-        // if(this.cache.watch.intersection.enabled){
-        //     this.cache.watch.intersection.raycaster.setFromCamera( this.cache.watch.intersection.pointer, this.camera.currentCamera );
-        //     const intersects = this.cache.watch.intersection.raycaster.intersectObjects( this.sceneGl.children, false );
-        //     if ( intersects.length > 0 ) {
-        //         let current = this.items.find(n=>n.id===intersects[ 0 ].object.id)
-        //         if ( this.cache.watch.intersection.INTERSECTED != current ) {
-        //             this.cache.watch.intersection.INTERSECTED =  current;
-        //             this.cache.watch.intersection.onStartIntersectionCallback.call(this);
-        //         }
-        // } else {
-        //     this.cache.watch.intersection.INTERSECTED = null;
-        // }
-        // }
 		this.rendererGl.render(this.sceneGl,this.camera.currentCamera);
 		return this;
 	}
-    // watchObjectIntersection(onStartIntersectionCallback=()=>{},onEndIntersectionCallback=()=>{}){
-    //     this.cache.watch.intersection.onStartIntersectionCallback=()=>onStartIntersectionCallback(this.cache.watch.intersection.INTERSECTED);
-    //     this.cache.watch.intersection.onEndIntersectionCallback=()=>onEndIntersectionCallback(this.cache.watch.intersection.INTERSECTED);
-    //     return this;
-    // }
     add(...obj){
 		obj.map((n,i)=>{
 			if(n instanceof ZikoThreeObject3D){
@@ -155,8 +122,6 @@ class ZikoThreeSceneGl extends ZikoUIElement{
 			}
 			else this.sceneGl.add(obj[i])
 		});
-        // this.sceneGl.dispatchEvent({ type: 'rerender', message: 'This is a custom event!' })
-        // this.emit("rerender");
         this.maintain();
 		return this;
 	}
