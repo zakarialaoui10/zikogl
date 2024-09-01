@@ -1,6 +1,6 @@
 {
-  "name": "zikogl",
-  "version": "0.0.1",
+  "name": "ziko-gl",
+  "version": "0.0.0",
   "description": "",
   "main": "src/index.js",
   "type": "module",
