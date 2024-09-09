@@ -4,7 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 const banner= `
 /*
-  Project: zikogl
+  Project: ziko-gl
   Author: Zakaria Elalaoui
   Date : ${new Date()}
   Git-Repo : https://github.com/zakarialaoui10/ziko.js
