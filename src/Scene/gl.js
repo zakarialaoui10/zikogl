@@ -1,3 +1,4 @@
+import { ZikoUIContainerElement, html } from "ziko";
 import {
     WebGLRenderer, 
     Scene,
@@ -8,11 +9,7 @@ import {
     Fog,
     FogExp2
  } from "three";
-import {
-    ZikoUIElement,
-} from "ziko"
-import Ziko  from "ziko";
-import { ZikoCamera } from "../Camera";
+import { ZikoCamera } from "../camera";
 import { 
     ZikoThreeObject3D,
  } from "../Object3D/ZikoThreeObject3D.js";
@@ -27,7 +24,7 @@ import {
     ZikoPointerLockControls
 } from "../Controls/index.js";
 import { isValidTexture, useTexture } from "../Loaders/texture.js";
-class ZikoThreeSceneGl extends ZikoUIElement{
+class ZikoThreeSceneGl extends ZikoUIContainerElement{
     constructor(w,h){
         super("figure","figure")
         Object.assign(this.cache,{
@@ -47,7 +44,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
                 ptr:null
             }
         })
-        this.canvas=Ziko.UI.html("canvas").render(true,this.element)
+        this.canvas=html("canvas").render(this.element)
         this.rendererGl=new WebGLRenderer({canvas:this.canvas.element});
         this.rendererTarget=this.rendererGl;
 		this.sceneGl=new Scene();
@@ -56,7 +53,7 @@ class ZikoThreeSceneGl extends ZikoUIElement{
         this.camera.parent=this;
         this.sceneGl.background=new Color("#3333ee");
         this.renderGl()
-        this.render();
+        // this.render();
         this.size(w,h);
         this.watchSize(()=>this.maintain())
         this.style({

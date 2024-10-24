@@ -1,7 +1,3 @@
-import { GLTFLoader } from "three/examples/jsm/Addons.js";
-import { OBJLoader } from "three/examples/jsm/Addons.js";
-// window.gltf=new GLTFLoader()
-// window.ob=new OBJLoader()
 import * as THREE from "three"
 import { SceneGl } from "./Scene/gl.js";
 import { SceneCss } from "./Scene/css.js";
